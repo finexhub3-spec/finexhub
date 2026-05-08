@@ -54,7 +54,7 @@ function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/kandavel9894@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/bexsigmatech@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
