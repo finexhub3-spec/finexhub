@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageIntro from '../components/PageIntro.jsx';
 import { useSEO } from '../hooks/useSEO.js';
@@ -350,12 +350,9 @@ function LegalPage() {
               </p>
             </div>
             <div className="legal-contact-actions">
-              <a href="mailto:bexsigmatech@gmail.com" className="button button-primary">
-                📧 Email Support
-              </a>
-              <a href="/contact" className="button button-secondary">
+              <Link to="/contact" className="button button-primary">
                 💬 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </motion.div>
