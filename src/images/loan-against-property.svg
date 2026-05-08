@@ -1,0 +1,32 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="propertyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E53E3E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C53030;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#propertyGradient)"/>
+  <g transform="translate(50,50)">
+    <!-- Property document -->
+    <rect x="120" y="80" width="160" height="120" fill="#FFFFFF" stroke="#2D3748" stroke-width="3" rx="5"/>
+    <!-- Document lines -->
+    <line x1="130" y1="100" x2="270" y2="100" stroke="#E2E8F0" stroke-width="2"/>
+    <line x1="130" y1="120" x2="250" y2="120" stroke="#E2E8F0" stroke-width="2"/>
+    <line x1="130" y1="140" x2="260" y2="140" stroke="#E2E8F0" stroke-width="2"/>
+    <line x1="130" y1="160" x2="240" y2="160" stroke="#E2E8F0" stroke-width="2"/>
+    <line x1="130" y1="180" x2="255" y2="180" stroke="#E2E8F0" stroke-width="2"/>
+    <!-- House icon on document -->
+    <polygon points="200,110 220,110 220,130 200,130" fill="#4A90E2" stroke="#2C5282" stroke-width="1"/>
+    <polygon points="190,110 210,95 230,110" fill="#E53E3E" stroke="#C53030" stroke-width="1"/>
+    <!-- Key -->
+    <circle cx="240" cy="150" r="8" fill="#F6E05E" stroke="#D69E2E" stroke-width="2"/>
+    <rect x="240" y="142" width="20" height="4" fill="#F6E05E"/>
+    <rect x="255" y="135" width="4" height="15" fill="#F6E05E"/>
+    <rect x="250" y="135" width="4" height="6" fill="#F6E05E"/>
+    <!-- Money stack -->
+    <rect x="140" y="150" width="25" height="3" fill="#48BB78"/>
+    <rect x="142" y="147" width="21" height="3" fill="#38A169"/>
+    <rect x="144" y="144" width="17" height="3" fill="#2F855A"/>
+  </g>
+  <text x="200" y="270" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="20" font-weight="bold">Loan Against Property</text>
+</svg>

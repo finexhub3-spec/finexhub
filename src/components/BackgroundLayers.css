@@ -1,0 +1,26 @@
+.background-layers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.layer-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(16, 21, 19, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 21, 19, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.55;
+}
+
+.layer-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(189, 242, 109, 0.42), transparent 22%),
+    radial-gradient(circle at 82% 16%, rgba(101, 214, 173, 0.26), transparent 20%),
+    linear-gradient(180deg, rgba(244, 247, 239, 0.25), rgba(244, 247, 239, 0.88));
+  opacity: 0.76;
+}

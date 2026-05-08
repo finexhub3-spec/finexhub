@@ -1,0 +1,21 @@
+{
+  "name": "Bex Sigma Finance",
+  "short_name": "BexSigma",
+  "description": "India's trusted finance and loan consultancy — home loans, personal loans, business loans with fast approval.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101513",
+  "theme_color": "#101513",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "business"],
+  "lang": "en-IN",
+  "dir": "ltr",
+  "orientation": "portrait-primary"
+}

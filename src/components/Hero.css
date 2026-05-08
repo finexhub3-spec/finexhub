@@ -1,0 +1,438 @@
+.section.hero-section {
+  max-width: none;
+  min-height: 168vh;
+  padding: 0;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(189, 242, 109, 0.32), transparent 20%),
+    radial-gradient(circle at 78% 22%, rgba(101, 214, 173, 0.24), transparent 26%),
+    linear-gradient(180deg, #fbfcf6 0%, #f4f7ef 58%, rgba(244, 247, 239, 0) 100%);
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  padding: 132px 24px 32px;
+}
+
+.hero-copy {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #151716;
+  background: linear-gradient(135deg, #e9f7d4, #d4f5e8);
+  border: 1px solid rgba(16, 21, 19, 0.08);
+  box-shadow: 0 10px 32px rgba(36, 50, 43, 0.08);
+  font-size: 0.82rem;
+  font-weight: 850;
+  transition: all 0.3s ease;
+}
+
+.hero-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(36, 50, 43, 0.12);
+}
+
+.hero-copy h1 {
+  max-width: 14ch;
+  margin: 20px auto 0;
+  font-size: clamp(3rem, 9vw, 9.35rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.hero-copy p {
+  max-width: 620px;
+  margin: 24px auto 0;
+  color: #5d6a64;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+  color: rgba(16, 21, 19, 0.62);
+  font-size: 0.92rem;
+  will-change: transform, opacity;
+}
+
+.hero-proof strong {
+  font-size: 0.92rem;
+  font-weight: 850;
+}
+
+.proof-stack {
+  display: flex;
+  padding-left: 12px;
+}
+
+.proof-stack span {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -12px;
+  border: 2px solid #fbfcf6;
+  border-radius: 50%;
+  color: #101513;
+  background:
+    linear-gradient(135deg, rgba(189, 242, 109, 0.92), rgba(101, 214, 173, 0.86)),
+    #fff;
+  box-shadow: 0 10px 24px rgba(36, 50, 43, 0.16);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.proof-stack span:nth-child(2) {
+  background: linear-gradient(135deg, #f6f0df, #bde7d4);
+}
+
+.proof-stack span:nth-child(3) {
+  background: linear-gradient(135deg, #fff, #d7f7a0);
+}
+
+.proof-stack span:nth-child(4) {
+  background: linear-gradient(135deg, #f4d18d, #f9fff0);
+}
+
+.proof-stack span:nth-child(5) {
+  background: linear-gradient(135deg, #10221c, #65d6ad);
+  color: #f9fff0;
+}
+
+.hero-visual {
+  position: relative;
+  width: min(1260px, calc(100vw - 40px));
+  margin-top: 34px;
+  overflow: hidden;
+  transform-origin: center top;
+  box-shadow:
+    0 46px 110px rgba(36, 50, 43, 0.24),
+    0 0 0 1px rgba(16, 21, 19, 0.08);
+  will-change: transform, border-radius;
+}
+
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 32%),
+    radial-gradient(circle at 50% 0%, rgba(189, 242, 109, 0.24), transparent 34%);
+}
+
+.hero-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+  background: #f9fbf3;
+  border-radius: inherit;
+}
+
+.partner-strip {
+  width: min(1080px, calc(100% - 40px));
+  overflow: hidden;
+  margin: 34px auto 0;
+  padding-top: 14px;
+  color: #617069;
+  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  animation: partnerFadeIn 0.8s ease-out 0.7s both;
+}
+
+.partner-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 38px;
+  animation: partnerMarquee 22s linear infinite;
+}
+
+.partner-strip strong {
+  color: rgba(16, 21, 19, 0.52);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+@keyframes titleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* New smooth animations */
+.hero-headline {
+  position: relative;
+  max-width: 12ch;
+  margin: 20px auto 0;
+  font-size: clamp(4rem, 9vw, 9.35rem);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-weight: 900;
+  color: #404040;
+}
+
+.letter {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-headline:hover .letter {
+  transform: translateY(-4px);
+  filter: brightness(1.2);
+}
+
+.hero-description {
+  animation: slideIn 0.75s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  color: #25372f;
+  background: linear-gradient(135deg, #e9f7d4, #d4f5e8);
+  border: 1px solid rgba(16, 21, 19, 0.08);
+  box-shadow: 0 10px 32px rgba(36, 50, 43, 0.08);
+  font-size: 0.82rem;
+  font-weight: 850;
+  transition: all 0.3s ease;
+}
+
+.hero-pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(36, 50, 43, 0.12);
+}
+
+@keyframes partnerMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes partnerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.partner-strip strong {
+  color: rgba(16, 21, 19, 0.52);
+  font-size: 1rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.partner-strip strong:hover {
+  color: #101513;
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .section.hero-section {
+    min-height: 150vh;
+  }
+
+  .hero-sticky {
+    padding-top: 118px;
+  }
+
+  .hero-copy h1 {
+    max-width: 11ch;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+
+@media (max-width: 720px) {
+  .section.hero-section {
+    min-height: 130vh;
+  }
+
+  .hero-sticky {
+    padding: 100px 16px 24px;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.4rem, 11vw, 4.2rem);
+    max-width: 14ch;
+    margin: 16px auto 0;
+  }
+
+  .hero-copy p {
+    max-width: 100%;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  }
+
+  .hero-pill {
+    font-size: 0.78rem;
+  }
+
+  .hero-proof {
+    width: min(360px, 100%);
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 24px;
+    border-radius: 8px;
+  }
+
+  .hero-visual img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .partner-strip {
+    margin-top: 20px;
+  }
+
+  .partner-track {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section.hero-section {
+    min-height: 115vh;
+  }
+
+  .hero-sticky {
+    padding: 88px 14px 20px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 12vw, 3.2rem);
+    letter-spacing: -0.035em;
+  }
+
+  .hero-copy p {
+    font-size: clamp(0.88rem, 4vw, 1rem);
+    margin-top: 16px;
+  }
+
+  .proof-stack span {
+    width: 32px;
+    height: 32px;
+    font-size: 0.62rem;
+  }
+
+  .hero-proof strong {
+    font-size: 0.82rem;
+  }
+
+  .hero-visual img {
+    aspect-ratio: 1 / 1;
+  }
+
+  .partner-strip strong {
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section.hero-section {
+    min-height: auto;
+  }
+
+  .hero-sticky {
+    position: relative;
+  }
+
+  .hero-copy h1,
+  .hero-copy p,
+  .hero-actions,
+  .partner-track {
+    animation: none;
+  }
+}
