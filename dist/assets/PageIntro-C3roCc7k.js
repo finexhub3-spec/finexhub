@@ -1,1 +1,0 @@
-import{j as e}from"./vendor-motion-B2Pzf6sd.js";function c({eyebrow:s,title:a,children:r}){return e.jsx("section",{className:"section page-hero",children:e.jsxs("div",{className:"section-head readable-head",children:[e.jsx("span",{className:"eyebrow",children:s}),e.jsx("h1",{children:a}),e.jsx("p",{children:r})]})})}export{c as P};

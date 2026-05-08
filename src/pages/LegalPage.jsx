@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageIntro from '../components/PageIntro.jsx';
 import { useSEO } from '../hooks/useSEO.js';
@@ -217,7 +218,25 @@ const itemVariants = {
 
 /* ── Component ───────────────────────────────────────────── */
 function LegalPage() {
-  const [activeTab, setActiveTab] = useState('privacy');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabFromUrl = searchParams.get('tab');
+  const [activeTab, setActiveTab] = useState(
+    tabFromUrl === 'terms' ? 'terms' : 'privacy'
+  );
+
+  // Sync tab when URL query param changes (e.g. clicking footer link)
+  useEffect(() => {
+    const tab = searchParams.get('tab');
+    if (tab === 'terms' || tab === 'privacy') {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
+
+  // Update URL when tab is switched manually
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setSearchParams({ tab }, { replace: true });
+  };
 
   useSEO({
     title:
@@ -257,7 +276,7 @@ function LegalPage() {
             aria-selected={activeTab === 'privacy'}
             aria-controls="panel-privacy"
             className={`legal-tab ${activeTab === 'privacy' ? 'active' : ''}`}
-            onClick={() => setActiveTab('privacy')}
+            onClick={() => handleTabChange('privacy')}
           >
             <span className="tab-icon">🛡️</span>
             Privacy Policy
@@ -268,7 +287,7 @@ function LegalPage() {
             aria-selected={activeTab === 'terms'}
             aria-controls="panel-terms"
             className={`legal-tab ${activeTab === 'terms' ? 'active' : ''}`}
-            onClick={() => setActiveTab('terms')}
+            onClick={() => handleTabChange('terms')}
           >
             <span className="tab-icon">📜</span>
             Terms & Conditions

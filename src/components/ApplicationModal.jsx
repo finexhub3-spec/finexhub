@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Toast from './Toast.jsx';
 import './ApplicationModal.css';
@@ -32,14 +33,11 @@ function ApplicationModal({ isOpen, onClose }) {
     state: '',
     pincode: '',
 
-    // Additional Information
-    existingLoans: '',
-    creditScore: '',
-    coApplicant: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
 
   const handleInputChange = (e) => {
@@ -50,8 +48,36 @@ function ApplicationModal({ isOpen, onClose }) {
     }));
   };
 
+  // Required fields per step
+  const requiredFieldsByStep = {
+    1: ['fullName', 'email', 'phone', 'dateOfBirth', 'panNumber', 'aadhaarNumber'],
+    2: ['employmentType', 'monthlyIncome', 'companyName', 'workExperience'],
+    3: ['loanType', 'loanAmount', 'tenure', 'purpose'],
+    4: ['currentAddress', 'city', 'state', 'pincode'],
+  };
+
+  // Check if all required fields for a given step are filled
+  const isStepValid = (stepNum) => {
+    const fields = requiredFieldsByStep[stepNum];
+    if (!fields) return true; // Step 5 (Review) has no input fields
+    return fields.every((field) => formData[field].toString().trim() !== '');
+  };
+
+  // Check if ALL steps are valid (for submit)
+  const isFormComplete = () => {
+    return [1, 2, 3, 4].every(isStepValid) && agreedToTerms;
+  };
+
   const nextStep = () => {
-    if (step < 4) {
+    if (!isStepValid(step)) {
+      setToast({
+        show: true,
+        message: 'Please fill in all required fields before proceeding.',
+        type: 'error'
+      });
+      return;
+    }
+    if (step < 5) {
       setStep(step + 1);
     }
   };
@@ -93,9 +119,6 @@ function ApplicationModal({ isOpen, onClose }) {
           'City': formData.city,
           'State': formData.state,
           'Pincode': formData.pincode,
-          'Existing Loans': formData.existingLoans || 'None',
-          'Credit Score': formData.creditScore || 'Not provided',
-          'Co-Applicant': formData.coApplicant || 'None',
           _subject: `New Loan Application from ${formData.fullName}`,
           _template: 'table'
         })
@@ -115,13 +138,13 @@ function ApplicationModal({ isOpen, onClose }) {
         onClose();
         setStep(1);
         setSubmitStatus(null);
+        setAgreedToTerms(false);
         setToast({ show: false, message: '', type: 'success' });
         setFormData({
           fullName: '', email: '', phone: '', dateOfBirth: '', panNumber: '', aadhaarNumber: '',
           employmentType: '', monthlyIncome: '', companyName: '', workExperience: '',
           loanType: '', loanAmount: '', tenure: '', purpose: '',
           currentAddress: '', city: '', state: '', pincode: '',
-          existingLoans: '', creditScore: '', coApplicant: ''
         });
       }, 3000);
     } catch (error) {
@@ -145,7 +168,8 @@ function ApplicationModal({ isOpen, onClose }) {
     { number: 1, title: 'Personal Info', description: 'Basic details' },
     { number: 2, title: 'Employment', description: 'Income details' },
     { number: 3, title: 'Loan Details', description: 'Loan requirements' },
-    { number: 4, title: 'Review & Submit', description: 'Final confirmation' }
+    { number: 4, title: 'Address', description: 'Residential details' },
+    { number: 5, title: 'Review & Submit', description: 'Final confirmation' }
   ];
 
   if (!isOpen) return null;
@@ -174,16 +198,16 @@ function ApplicationModal({ isOpen, onClose }) {
 
           {/* Progress Steps */}
           <div className="progress-steps">
-            {steps.map((stepInfo) => (
+            {steps.map((stepInfo, idx) => (
               <div
                 key={stepInfo.number}
                 className={`progress-step ${step >= stepInfo.number ? 'active' : ''} ${step > stepInfo.number ? 'completed' : ''}`}
               >
-                <div className="step-number">{stepInfo.number}</div>
-                <div className="step-info">
-                  <div className="step-title">{stepInfo.title}</div>
-                  <div className="step-description">{stepInfo.description}</div>
+                {idx > 0 && <div className="step-connector" />}
+                <div className="step-dot">
+                  {step > stepInfo.number ? '✓' : stepInfo.number}
                 </div>
+                <span className="step-label">{stepInfo.title}</span>
               </div>
             ))}
           </div>
@@ -446,8 +470,100 @@ function ApplicationModal({ isOpen, onClose }) {
               </motion.div>
             )}
 
-            {/* Step 4: Review & Submit */}
+            {/* Step 4: Address Information */}
             {step === 4 && (
+              <motion.div
+                className="form-step"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3>Address Information</h3>
+                <div className="form-grid">
+                  <div className="form-group full-width">
+                    <label>Current Address *</label>
+                    <textarea
+                      name="currentAddress"
+                      value={formData.currentAddress}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter your full residential address"
+                      rows="3"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>City *</label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="Enter city"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>State *</label>
+                    <select
+                      name="state"
+                      value={formData.state}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="">Select state</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Puducherry">Puducherry</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>Pincode *</label>
+                    <input
+                      type="text"
+                      name="pincode"
+                      value={formData.pincode}
+                      onChange={handleInputChange}
+                      required
+                      placeholder="600001"
+                      pattern="[0-9]{6}"
+                      maxLength="6"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 5: Review & Submit */}
+            {step === 5 && (
               <motion.div
                 className="form-step"
                 initial={{ opacity: 0, x: 20 }}
@@ -469,15 +585,29 @@ function ApplicationModal({ isOpen, onClose }) {
                     <strong>Loan Request:</strong>
                     <p>{formData.loanType} • ₹{formData.loanAmount} • {formData.tenure} years</p>
                   </div>
+                  <div className="review-item">
+                    <strong>Address:</strong>
+                    <p>{formData.currentAddress}, {formData.city}, {formData.state} — {formData.pincode}</p>
+                  </div>
                 </div>
 
                 <div className="terms-agreement">
-                  <input type="checkbox" id="terms" required />
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    checked={agreedToTerms}
+                    onChange={(e) => setAgreedToTerms(e.target.checked)}
+                  />
                   <label htmlFor="terms">
-                    I agree to the <a href="#terms" target="_blank">Terms & Conditions</a> and
-                    <a href="#privacy" target="_blank">Privacy Policy</a>
+                    I agree to the{' '}
+                    <Link to="/legal?tab=terms" onClick={onClose}>Terms & Conditions</Link> and{' '}
+                    <Link to="/legal?tab=privacy" onClick={onClose}>Privacy Policy</Link>
                   </label>
                 </div>
+
+                {!agreedToTerms && (
+                  <p className="terms-warning">⚠️ You must agree to the Terms & Conditions and Privacy Policy to submit.</p>
+                )}
 
                 {submitStatus === 'success' && (
                   <motion.div
@@ -498,7 +628,7 @@ function ApplicationModal({ isOpen, onClose }) {
                   Previous
                 </button>
               )}
-              {step < 4 ? (
+              {step < 5 ? (
                 <button type="button" className="button button-primary" onClick={nextStep}>
                   Next
                 </button>
@@ -506,7 +636,7 @@ function ApplicationModal({ isOpen, onClose }) {
                 <button
                   type="submit"
                   className="button button-primary"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !isFormComplete()}
                 >
                   {isSubmitting ? 'Submitting...' : 'Submit Application'}
                 </button>

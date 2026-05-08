@@ -14,18 +14,18 @@ function Footer() {
         </div>
         <nav className="footer-links" aria-label="Footer navigation">
           {footerLinks.map((item) => (
-            <a key={item} href={`/${item === 'Reviews' ? 'testimonials' : item.toLowerCase()}`}>
+            <Link key={item} to={`/${item.toLowerCase()}`}>
               {item}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="footer-copy">
           <p>Bex Sigma Finance is a premium fintech experience. Loan conditions depend on eligibility, jurisdiction, and lender terms.</p>
           <small>© 2026 Bex Sigma Finance. All rights reserved.</small>
           <div className="footer-legal-links">
-            <Link to="/legal">Privacy Policy</Link>
+            <Link to="/legal?tab=privacy">Privacy Policy</Link>
             <span className="footer-sep">•</span>
-            <Link to="/legal">Terms & Conditions</Link>
+            <Link to="/legal?tab=terms">Terms & Conditions</Link>
           </div>
         </div>
       </div>
