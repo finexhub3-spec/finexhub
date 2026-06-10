@@ -22,14 +22,7 @@ A cinematic React + Vite loan website with dark theme, floating financial partic
 
 ## Email Setup
 
-Form submissions (contact form and loan applications) are sent to `bexsigmatech@gmail.com` using EmailJS.
-
-**Setup Required:**
-1. Create a free EmailJS account at [emailjs.com](https://www.emailjs.com/)
-2. Configure email service and templates
-3. Update the `.env` file with your EmailJS credentials
-
-See `EMAIL_SETUP.md` for detailed instructions.
+Form submissions (contact form and loan applications) are sent directly to `finexhub3@gmail.com` using Formsubmit.co AJAX API. No external libraries or setup required.
 
 ## Timeline
 

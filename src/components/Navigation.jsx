@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import logo from '../images/finexhub_logo.png';
+import logo from '../images/logo_mark.jpg';
 import ApplicationModal from './ApplicationModal';
 import './Navigation.css';
 

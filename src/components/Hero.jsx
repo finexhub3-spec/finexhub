@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import heroDashboardImage from '../images/loan-hero-dashboard.png';
+import heroDashboardImage from '../images/loan-hero-dashboard.webp';
 import './Hero.css';
 
 const partners = ['HDFC', 'ICICI', 'Axis', 'SBI', 'Kotak', 'NBFC+', 'Bajaj', 'IDFC'];

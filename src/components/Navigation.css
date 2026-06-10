@@ -31,9 +31,9 @@
 .brand-logo {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: #fff;
-  object-fit: cover;
+  border-radius: 6px;
+  background: #000;
+  object-fit: contain;
 }
 
 .brand-text {
