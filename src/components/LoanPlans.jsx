@@ -3,23 +3,23 @@ import './LoanPlans.css';
 
 const plans = [
   {
-    name: 'Starter Check',
-    price: 'Free',
-    description: 'For borrowers who want a first eligibility and EMI direction.',
-    features: ['Profile review', 'Basic EMI estimate', 'Loan category guidance'],
+    name: 'Retail Services Desk',
+    price: 'Loans & Cover',
+    description: 'For individuals seeking housing, vehicle, education loans or personal insurance.',
+    features: ['Home & personal loan mapping', 'Health & vehicle insurance plans', 'Eligibility assessment'],
   },
   {
-    name: 'Application Assist',
-    price: 'Guided',
-    description: 'For applicants who want document support and lender comparison.',
-    features: ['Bank/NBFC matching', 'Document checklist', 'Application follow-up'],
+    name: 'Wealth Advisory Desk',
+    price: 'Grow & Secure',
+    description: 'For families planning long-term mutual fund goals and deposit portfolios.',
+    features: ['Child education planning SIPs', 'Retirement corpus building', 'FD / RD yield maximization'],
     featured: true,
   },
   {
-    name: 'Business Desk',
-    price: 'Custom',
-    description: 'For founders and owners planning larger funding requirements.',
-    features: ['MSME and working capital review', 'Collateral planning', 'Priority consultation'],
+    name: 'Corporate Desk',
+    price: 'SME Solutions',
+    description: 'For business owners seeking expansion capital and property mortgage advisory.',
+    features: ['MSME working capital review', 'Loan against property options', 'Commercial assets planning'],
   },
 ];
 
@@ -33,9 +33,9 @@ function LoanPlans() {
         viewport={{ once: true, amount: 0.35 }}
         transition={{ duration: 0.65, ease: 'easeOut' }}
       >
-        <span className="eyebrow">Choose your track</span>
-        <h2>Start small or get guided end to end.</h2>
-        <p>Pick the level of support that matches where you are in the loan journey.</p>
+        <span className="eyebrow">Our Segment Expertise</span>
+        <h2>Personalized financial solutions for everyone.</h2>
+        <p>Select your segment to explore how our specialized advisors can guide your journey.</p>
       </motion.div>
 
       <div className="plans-grid">

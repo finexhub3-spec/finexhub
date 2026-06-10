@@ -49,7 +49,7 @@ function Hero() {
   const trustY = useTransform(scrollYProgress, [0, 0.58], [0, -58]);
   const trustOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
 
-  const headline = "Fast Approval. Honest Advice. Zero Confusion";
+  const headline = "Your Financial Growth,   is Our Commitment."
 
   return (
     <section className="section hero-section" id="home" ref={heroRef}>
@@ -67,7 +67,7 @@ function Hero() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            Loan planning
+            Financial Services Hub
           </motion.span>
           
           <motion.h1
@@ -97,7 +97,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            Compare eligibility, EMI options, documents, and bank offers in one clean view.
+            Compare premium loan products, optimize wealth management portfolios, invest in mutual funds, and protect your family with comprehensive insurance plans.
           </motion.p>
           
           <motion.div 

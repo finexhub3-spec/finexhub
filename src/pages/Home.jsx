@@ -11,10 +11,10 @@ import { useSEO } from '../hooks/useSEO.js';
 
 function Home() {
   useSEO({
-    title: 'Best Loan & Finance Consultancy India — Home Loan, Personal Loan, Business Loan',
-    description: "Bex Sigma Finance is India's trusted loan & finance consultancy. Get fast approvals on home loans, personal loans, business loans, vehicle loans. Compare banks, check EMI, apply in minutes.",
+    title: 'FinEx Hub | Premium Finance & Loan Consultancy India',
+    description: "FinEx Hub is India's trusted finance and loan consultancy. Get expert guidance on home loans, LAP, business loans, vehicle loans, wealth management, mutual funds, and insurance. Compare, plan, and apply.",
     canonical: '/',
-    keywords: ['finance company India', 'loan consultancy India', 'home loan', 'personal loan', 'business loan', 'EMI calculator', 'loan approval', 'NBFC loans', 'fast loan approval India', 'best loan rates', 'finance services', 'Bex Sigma Finance'],
+    keywords: ['finance company India', 'loan consultancy India', 'home loan', 'personal loan', 'business loan', 'EMI calculator', 'loan approval', 'NBFC loans', 'fast loan approval India', 'best loan rates', 'finance services', 'FinEx Hub', 'wealth management India', 'mutual funds planning', 'insurance agent'],
   });
 
   return (

@@ -14,7 +14,7 @@ function About() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 1.1, ease: 'easeOut' }}
         >
-          <span className="eyebrow">Why Bex Sigma Finance?</span>
+          <span className="eyebrow">Why FinEx Hub?</span>
           <h2>A borrower system built for clarity.</h2>
           <p>
             Move through loan discovery with the same ease as a modern SaaS dashboard:

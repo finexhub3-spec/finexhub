@@ -224,7 +224,7 @@
   line-height: 0.88;
   letter-spacing: -0.045em;
   font-weight: 900;
-  color: #404040;
+  color: #101513;
 }
 
 .letter {
@@ -259,7 +259,7 @@
   min-height: 38px;
   padding: 0 16px;
   border-radius: 999px;
-  color: #25372f;
+  color: #151716;
   background: linear-gradient(135deg, #e9f7d4, #d4f5e8);
   border: 1px solid rgba(16, 21, 19, 0.08);
   box-shadow: 0 10px 32px rgba(36, 50, 43, 0.08);

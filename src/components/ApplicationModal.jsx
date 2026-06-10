@@ -94,7 +94,7 @@ function ApplicationModal({ isOpen, onClose }) {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/bexsigmatech@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/finexhub3@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -372,19 +372,35 @@ function ApplicationModal({ isOpen, onClose }) {
                 <h3>Loan Details</h3>
                 <div className="form-grid">
                   <div className="form-group">
-                    <label>Loan Type *</label>
+                    <label>Service Type *</label>
                     <select
                       name="loanType"
                       value={formData.loanType}
                       onChange={handleInputChange}
                       required
                     >
-                      <option value="">Select loan type</option>
-                      <option value="home">Home Loan</option>
-                      <option value="personal">Personal Loan</option>
-                      <option value="business">Business Loan</option>
-                      <option value="vehicle">Vehicle Loan</option>
-                      <option value="education">Education Loan</option>
+                      <option value="">Select service type</option>
+                      <optgroup label="Loans">
+                        <option value="Home Loan">Home Loan</option>
+                        <option value="Loan Against Property">Loan Against Property</option>
+                        <option value="Business Loan">Business Loan</option>
+                        <option value="Personal Loan">Personal Loan</option>
+                        <option value="Education Loan">Education Loan</option>
+                        <option value="Vehicle Loan">Vehicle Loan</option>
+                      </optgroup>
+                      <optgroup label="Wealth Management">
+                        <option value="Fixed Deposit">Fixed Deposit</option>
+                        <option value="Recurring Deposit">Recurring Deposit</option>
+                      </optgroup>
+                      <optgroup label="Mutual Funds">
+                        <option value="Child Education Planning">Child Education Planning</option>
+                        <option value="Retirement Planning">Retirement Planning</option>
+                      </optgroup>
+                      <optgroup label="Insurance">
+                        <option value="Health Insurance">Health Insurance</option>
+                        <option value="Life Insurance">Life Insurance</option>
+                        <option value="Vehicle Insurance">Vehicle Insurance</option>
+                      </optgroup>
                     </select>
                   </div>
                   <div className="form-group">
@@ -442,28 +458,23 @@ function ApplicationModal({ isOpen, onClose }) {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label>Loan Purpose *</label>
+                    <label>Purpose *</label>
                     <select
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleInputChange}
                       required
                     >
-                      <option value="">Select purpose</option>
+                      <option value="">Select purpose / detail</option>
+                      <option value="new-investment">New Investment / Account</option>
                       <option value="home-purchase">Home Purchase</option>
-                      <option value="home-construction">Home Construction</option>
-                      <option value="home-renovation">Home Renovation</option>
-                      <option value="business-expansion">Plot Purchase Loan</option>
-                      <option value="education">Plot Mortgage</option>
-                      <option value="vehicle">Plot Purchase+Construction Loan</option>
-                      <option value="personal">Loan against Property</option>
-                      <option value="debt-consolidation">Balance Transfer</option>
-                      <option value="debt-consolidation">Commercial Property Construction/Extension Loan</option>
-                      <option value="debt-consolidation">Commercial Property Purchase Loan</option>
-                      <option value="debt-consolidation">Express Balance Transfer</option>
-                      <option value="debt-consolidation">Express Balance Transfer+Top up</option>
-                      <option value="debt-consolidation">Education Loan</option>
-                      <option value="debt-consolidation">Vehicle Loan</option>
+                      <option value="home-construction">Home Construction / Renovation</option>
+                      <option value="plot-purchase">Plot Purchase / Mortgage</option>
+                      <option value="business-expansion">Business Expansion / Capital</option>
+                      <option value="education">Education / Study Abroad</option>
+                      <option value="vehicle">Vehicle Purchase</option>
+                      <option value="insurance-policy">Insurance Coverage</option>
+                      <option value="other">Other / General Query</option>
                     </select>
                   </div>
                 </div>

@@ -7,7 +7,7 @@ Disallow: /.env
 Disallow: /node_modules/
 
 # Sitemap location
-Sitemap: https://www.bexsigmatech.com/sitemap.xml
+Sitemap: https://www.finexhub.com/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1

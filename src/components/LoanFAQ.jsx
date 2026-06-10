@@ -2,10 +2,22 @@ import { motion } from 'framer-motion';
 import './LoanFAQ.css';
 
 const faqs = [
-  ['Which loan can I apply for?', 'Home, personal, business, vehicle, and loan against property options are supported.'],
-  ['How fast can I get guidance?', 'Most profile reviews can be discussed within 24 to 48 hours after basic details are shared.'],
-  ['Do I need all documents first?', 'No. You can begin with a profile check and then prepare documents based on the selected lender.'],
-  ['Can EMI be planned before applying?', 'Yes. Use the EMI calculator to test amount, tenure, and rate before moving forward.'],
+  [
+    'What services does FinEx Hub provide?',
+    'We offer a comprehensive suite of financial solutions including Loans (Home, LAP, Business, Personal, Education, and Vehicle), Wealth Management (Fixed Deposits, Recurring Deposits), Mutual Funds (Child Education, Retirement Planning), and Insurance (Health, Life, Vehicle).'
+  ],
+  [
+    'How do I start investing or applying for a loan?',
+    'You can start by submitting an online inquiry or application via our website. Our certified financial advisors will review your profile and match you with the best rates or investment schemes within 24 hours.'
+  ],
+  [
+    'Is consultation free of charge?',
+    'Yes, our initial assessment, eligibility checks, and investment suggestions are completely free. We guide you through the process with transparent details and zero hidden charges.'
+  ],
+  [
+    'Which banks and financial institutions do you partner with?',
+    'We work with over 30 leading public/private sector banks, NBFCs, mutual fund houses, and top-tier insurance providers in India to secure optimal terms for you.'
+  ]
 ];
 
 function LoanFAQ() {
@@ -19,7 +31,7 @@ function LoanFAQ() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       >
         <span className="eyebrow">FAQ</span>
-        <h2>Questions before you apply.</h2>
+        <h2>Questions before you begin.</h2>
       </motion.div>
 
       <div className="faq-list">

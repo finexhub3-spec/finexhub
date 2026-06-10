@@ -7,10 +7,10 @@ import './ContactPage.css';
 
 function ContactPage() {
   useSEO({
-    title: 'Contact Us — Apply for Loan, Get Finance Consultation',
-    description: 'Contact Bex Sigma Finance for expert loan and finance consultation. Apply for home loan, personal loan, or business loan. Call +91 9626900913 or email bexsigmatech@gmail.com.',
+    title: 'Contact Us — FinEx Hub Finance Consultation',
+    description: 'Contact FinEx Hub for expert loan and finance consultation. Apply for home loan, personal loan, or business loan. Call +91 8940779023, +91 9626900913, +91 9445534914 or email finexhub3@gmail.com.',
     canonical: '/contact',
-    keywords: ['contact finance consultant India', 'apply for home loan', 'loan consultation', 'finance advisor contact', 'apply personal loan India', 'Bex Sigma Finance contact'],
+    keywords: ['contact finance consultant India', 'apply for home loan', 'loan consultation', 'finance advisor contact', 'apply personal loan India', 'FinEx Hub contact'],
   });
 
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/bexsigmatech@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/finexhub3@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,20 +111,20 @@ function ContactPage() {
     {
       icon: '📞',
       title: 'Phone',
-      details: '+91 9626900913',
+      details: 'Kanthamani A: +91 89407 79023\nHariharan Dilli: +91 96269 00913\nPunithavel J: +91 94455 34914',
       description: 'Mon-Sat 9AM-6PM IST'
     },
     {
       icon: '📧',
       title: 'Email',
-      details: 'bexsigmatech@gmail.com',
+      details: 'finexhub3@gmail.com',
       description: 'We respond within 24 hours'
     },
     {
       icon: '📍',
       title: 'Office',
-      details: 'Ayyampettai,Kancheepuram',
-      description: 'Serving all major cities'
+      details: 'S.No. 313/2B1, Vandavasi to Kanchipuram Road, Melma X-Road, Cheyyar Taluk, Tiruvannamalai – 604 408',
+      description: 'Cheyyar Taluk, Tiruvannamalai'
     }
   ];
 
@@ -160,7 +160,7 @@ function ContactPage() {
                   <div className="contact-icon">{info.icon}</div>
                   <div className="contact-details">
                     <h4>{info.title}</h4>
-                    <p className="contact-primary">{info.details}</p>
+                    <p className="contact-primary" style={{ whiteSpace: 'pre-line' }}>{info.details}</p>
                     <p className="contact-secondary">{info.description}</p>
                   </div>
                 </motion.div>
@@ -220,20 +220,35 @@ function ContactPage() {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="loanType">Loan Type</label>
+                  <label htmlFor="loanType">Service Type</label>
                   <select
                     id="loanType"
                     name="loanType"
                     value={formData.loanType}
                     onChange={handleInputChange}
                   >
-                    <option value="">Select loan type</option>
-                    <option value="home">Home Loan</option>
-                    <option value="personal">Personal Loan</option>
-                    <option value="business">Business Loan</option>
-                    <option value="vehicle">Vehicle Loan</option>
-                    <option value="education">Education Loan</option>
-                    <option value="other">Other</option>
+                    <option value="">Select service type</option>
+                    <optgroup label="Loans">
+                      <option value="home">Home Loan</option>
+                      <option value="lap">Loan Against Property</option>
+                      <option value="business">Business Loan</option>
+                      <option value="personal">Personal Loan</option>
+                      <option value="education">Education Loan</option>
+                      <option value="vehicle">Vehicle Loan</option>
+                    </optgroup>
+                    <optgroup label="Wealth Management">
+                      <option value="fd">Fixed Deposit</option>
+                      <option value="rd">Recurring Deposit</option>
+                    </optgroup>
+                    <optgroup label="Mutual Funds">
+                      <option value="child-education">Child Education</option>
+                      <option value="retirement">Retirement Planning</option>
+                    </optgroup>
+                    <optgroup label="Insurance">
+                      <option value="health">Health Insurance</option>
+                      <option value="life">Life Insurance</option>
+                      <option value="vehicle-insurance">Vehicle Insurance</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>

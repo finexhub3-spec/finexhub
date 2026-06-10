@@ -11,8 +11,8 @@ import { useEffect } from 'react';
  */
 export function useSEO({ title, description, canonical, keywords }) {
   useEffect(() => {
-    const brand = 'Bex Sigma Finance';
-    const fullTitle = title ? `${title} | ${brand}` : `${brand} — Loan & Finance Consultancy India`;
+    const brand = 'FinEx Hub';
+    const fullTitle = title ? `${title} | ${brand}` : `${brand} — Finance, Loans & Wealth Management India`;
 
     // Title
     document.title = fullTitle;
@@ -26,7 +26,7 @@ export function useSEO({ title, description, canonical, keywords }) {
     }
 
     // Canonical
-    const base = 'https://www.bexsigmatech.com';
+    const base = 'https://www.finexhub.com';
     const canonicalUrl = canonical ? `${base}${canonical}` : base + window.location.pathname;
     setLink('canonical', canonicalUrl);
 

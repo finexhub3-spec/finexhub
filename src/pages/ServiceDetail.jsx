@@ -87,7 +87,7 @@ function ServiceDetail() {
         </article>
 
         <article className="readable-card service-info-card service-wide-card">
-          <span className="eyebrow">How Bex Sigma helps</span>
+          <span className="eyebrow">How FinEx Hub helps</span>
           <h2>Clear comparison, cleaner decisions.</h2>
           <p>
             We review your basic profile, match the service with suitable lender options, help you understand EMI comfort,

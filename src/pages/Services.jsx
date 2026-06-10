@@ -7,10 +7,10 @@ import { useSEO } from '../hooks/useSEO.js';
 
 function Services() {
   useSEO({
-    title: 'Loan & Finance Services — Home Loan, Personal Loan, Business Loan, Vehicle Loan',
-    description: 'Explore all finance and loan services by Bex Sigma Finance — home loans, personal loans, business loans, vehicle loans, education loans, loan against property, and balance transfer across India.',
+    title: 'Financial Services — Loans, Wealth Management, Mutual Funds, Insurance',
+    description: 'Explore all financial services by FinEx Hub — home loans, personal loans, business loans, vehicle loans, education loans, wealth management, fixed deposits, mutual funds, and insurance across India.',
     canonical: '/services',
-    keywords: ['finance services India', 'home loan services', 'personal loan India', 'business loan consultancy', 'vehicle loan', 'education loan', 'loan against property', 'balance transfer loan', 'Bex Sigma Finance'],
+    keywords: ['finance services India', 'home loan services', 'personal loan India', 'business loan consultancy', 'vehicle loan', 'education loan', 'wealth management', 'fixed deposit', 'recurring deposit', 'mutual funds', 'insurance services', 'FinEx Hub'],
   });
 
   return (

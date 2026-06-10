@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
-import logo from '../images/bexlogo.jpeg';
+import logo from '../images/finexhub_logo.png';
 import ApplicationModal from './ApplicationModal';
 import './Navigation.css';
 
@@ -33,11 +33,11 @@ function Navigation() {
         transition={{ duration: 0.35 }}
       >
         <NavLink to="/" className="brand">
-          <img src={logo} alt="Bex Sigma logo" className="brand-logo" />
+          <img src={logo} alt="FinEx Hub logo" className="brand-logo" />
 
           <span className="brand-text">
-            <span className="bex">BEX</span>
-            <span className="sigma"> Sigma Finance</span>
+            <span className="bex">FinEx</span>
+            <span className="sigma"> Hub</span>
           </span>
         </NavLink>
 
@@ -66,10 +66,14 @@ function Navigation() {
               {link.label}
             </NavLink>
           ))}
-          <button className="nav-cta" onClick={openModal}>
+          <button className="nav-cta mobile-cta" onClick={openModal}>
             Apply Now
           </button>
         </nav>
+
+        <button className="nav-cta desktop-cta" onClick={openModal}>
+          Apply Now
+        </button>
       </motion.header>
 
       {/* Backdrop — shown only on mobile when menu is open */}

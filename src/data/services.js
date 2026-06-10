@@ -15,7 +15,6 @@ import {
   FastApprovalInteractive,
   EMIEligibilityInteractive,
   BalanceTransferInteractive,
-  
 } from '../components/interactive-images';
 
 export const loanServices = [
@@ -33,7 +32,7 @@ export const loanServices = [
     benefits: ['Property purchase and construction support', 'Balance transfer review', 'Top-up and renovation options'],
     documents: ['PAN and Aadhaar', 'Income proof', 'Bank statements', 'Property papers'],
   },
-   {
+  {
     title: 'Loan Against Property',
     slug: 'loan-against-property',
     description: 'Use owned property as collateral for higher loan amounts and longer repayment tenure.',
@@ -61,7 +60,7 @@ export const loanServices = [
     benefits: ['Working capital and expansion funding', 'MSME and professional loan options', 'Secured and unsecured choices'],
     documents: ['KYC documents', 'Business registration proof', 'GST or ITR records', 'Bank statements'],
   },
-   {
+  {
     title: 'Personal Loan',
     slug: 'personal-loan',
     description: 'Instant cash for medical needs, travel, education, family expenses, or emergency plans.',
@@ -74,6 +73,20 @@ export const loanServices = [
       'Personal loan assistance for quick unsecured funding, with lender matching based on income, credit score, existing EMI load, and required disbursal speed.',
     benefits: ['Emergency and planned expense funding', 'No collateral requirement', 'Multiple bank and NBFC options'],
     documents: ['PAN and Aadhaar', 'Salary slips or income proof', 'Bank statements', 'Employment details'],
+  },
+  {
+    title: 'Education Loan',
+    slug: 'education-loan',
+    description: 'Funding for top universities in India and abroad, covering tuition fees, accommodation, and travel.',
+    features: ['High loan limits', 'Flexible moratorium period', 'Co-applicant flexibility'],
+    tag: 'Education',
+    icon: 'EL',
+    image: personalLoanImage,
+    interactiveComponent: PersonalLoanInteractive,
+    detail:
+      'Structured education loan support for students looking for admissions in India or abroad. Covers complete educational expenses, with competitive rates and student-friendly repayment terms.',
+    benefits: ['Covers up to 100% of education expenses', 'Tax benefits under Section 80E', 'Customized repayment structures'],
+    documents: ['Admission letter from college/university', 'Academic mark sheets', 'KYC of student & co-borrower', 'Income proof of co-borrower'],
   },
   {
     title: 'Vehicle Loan',
@@ -91,68 +104,122 @@ export const loanServices = [
   },
 ];
 
-export const supportServices = [
+export const wealthServices = [
   {
-    title: 'Loan Consultation',
-    slug: 'loan-consultation',
-    detail: 'Expert financial advice and profile-based suggestions.',
-    icon: 'LC',
-    interactiveComponent: LoanConsultationInteractive,
-    benefits: ['Profile review', 'Loan product selection', 'Application readiness check'],
-  },
-  {
-    title: 'Documentation Support',
-    slug: 'documentation-support',
-    detail: 'Assistance with KYC and document collection.',
-    icon: 'DS',
-    interactiveComponent: DocumentationSupportInteractive,
-    benefits: ['KYC checklist', 'Income document review', 'Missing document guidance'],
-  },
-  {
-    title: 'Bank Tie-ups',
-    slug: 'bank-tie-ups',
-    detail: 'Comparison across multiple Bank and NBFC partners.',
-    icon: 'BT',
-    interactiveComponent: BankTieupsInteractive,
-    benefits: ['Bank and NBFC comparison', 'Rate and tenure review', 'Suitable lender matching'],
-  },
-  {
-    title: 'Fast Approval',
-    slug: 'fast-approval',
-    detail: 'End-to-end status tracking and rapid processing.',
-    icon: 'FA',
-    interactiveComponent: FastApprovalInteractive,
-    benefits: ['Application follow-up', 'Faster file movement', 'Status clarity'],
-  },
-  {
-    title: 'EMI & Eligibility',
-    slug: 'emi-eligibility',
-    detail: 'Interactive calculators for informed decision making.',
-    icon: 'EMI',
+    title: 'Fixed Deposit',
+    slug: 'fixed-deposit',
+    description: 'Secure, guaranteed return investment options with flexible tenures and attractive interest rates.',
+    features: ['Guaranteed returns', 'Flexible tenure choices', 'Loan/Overdraft facility'],
+    tag: 'Wealth',
+    icon: 'FD',
+    image: propertyLoanImage,
     interactiveComponent: EMIEligibilityInteractive,
-    benefits: ['EMI planning', 'Eligibility estimate', 'Tenure and interest comparison'],
+    detail:
+      'Assist in finding and booking the highest yielding Fixed Deposits across partner banks and corporate entities, ensuring safety and growth of capital.',
+    benefits: ['Higher interest for senior citizens', 'Flexible payout intervals (monthly/quarterly)', 'Premature withdrawal option'],
+    documents: ['PAN and Aadhaar card', 'Bank account details', 'Recent photograph'],
   },
   {
-    title: 'Balance Transfer',
-    slug: 'balance-transfer',
-    detail: 'Optimization of existing debt to lower interest rates.',
-    icon: 'BT',
-    interactiveComponent: BalanceTransferInteractive,
-    benefits: ['Existing loan review', 'Interest saving estimate', 'Transfer process support'],
+    title: 'Recurring Deposit',
+    slug: 'recurring-deposit',
+    description: 'Save a fixed amount monthly to build a disciplined savings pool with compound interest returns.',
+    features: ['Disciplined monthly savings', 'Compounded interest growth', 'Low minimum starting amount'],
+    tag: 'Wealth',
+    icon: 'RD',
+    image: propertyLoanImage,
+    interactiveComponent: EMIEligibilityInteractive,
+    detail:
+      'Facilitate systematic monthly savings plan setup with top financial institutions, helping you build wealth incrementally.',
+    benefits: ['Automated monthly savings', 'Higher returns than savings accounts', 'Tenure options from 12 to 120 months'],
+    documents: ['KYC documents (Aadhaar & PAN)', 'Active savings account credentials', 'Nominee details'],
   },
- 
+];
+
+export const fundServices = [
+  {
+    title: 'Child Education',
+    slug: 'child-education',
+    description: 'Plan and invest in customized mutual fund portfolios to secure your child\'s future higher education.',
+    features: ['Goal-targeted portfolios', 'SIP or lump sum investments', 'Inflation-adjusted projections'],
+    tag: 'Funds',
+    icon: 'CEP',
+    image: personalLoanImage,
+    interactiveComponent: BalanceTransferInteractive,
+    detail:
+      'Personalized mutual fund selection tailored to meet the future cost of higher education, balancing risk and long-term capital appreciation.',
+    benefits: ['Tax efficient wealth growth', 'Diversified mutual fund selection', 'Automatic rebalancing support'],
+    documents: ['KYC of parent/guardian', 'Bank account details for SIP', 'Child\'s birth certificate copy'],
+  },
+  {
+    title: 'Retirement Planning',
+    slug: 'retirement-planning',
+    description: 'Build a substantial post-retirement corpus with tax-efficient, growth-oriented mutual funds.',
+    features: ['Long-term wealth compounding', 'Tax savings under Section 80C', 'Customizable withdrawal plans (SWP)'],
+    tag: 'Funds',
+    icon: 'RP',
+    image: personalLoanImage,
+    interactiveComponent: BalanceTransferInteractive,
+    detail:
+      'Strategic retirement asset allocation mapping to ensure financial independence, with systematic investment and pension planning.',
+    benefits: ['Diversified mutual fund basket', 'Systematic withdrawal plans post-retirement', 'Inflation protection'],
+    documents: ['PAN and Aadhaar', 'Address proof', 'Income proof (for high-value SIPs)'],
+  },
+];
+
+export const insuranceServices = [
+  {
+    title: 'Health Insurance',
+    slug: 'health-insurance',
+    description: 'Comprehensive medical coverage for family and individual hospitalization, critical illness, and day-care.',
+    features: ['Cashless treatment at network hospitals', 'Tax benefits under Sec 80D', 'Pre and post-hospitalization cover'],
+    tag: 'Insurance',
+    icon: 'HI',
+    image: businessLoanImage,
+    interactiveComponent: LoanConsultationInteractive,
+    detail:
+      'Profile-based health insurance advisory with cashless hospital networks, quick claim assistance, and maximum cover benefits.',
+    benefits: ['No claim bonus protection', 'Critical illness add-ons', 'Comprehensive family floater options'],
+    documents: ['Proposal form', 'Medical history declaration', 'KYC and age proof'],
+  },
+  {
+    title: 'Life Insurance',
+    slug: 'life-insurance',
+    description: 'Secure your family\'s financial future with Term Life or Endowment plans offering high coverage.',
+    features: ['Affordable term insurance premiums', 'High sum assured protection', 'Critical illness riders'],
+    tag: 'Insurance',
+    icon: 'LI',
+    image: businessLoanImage,
+    interactiveComponent: LoanConsultationInteractive,
+    detail:
+      'Structured life cover planning to secure your family\'s future, ensuring outstanding liabilities are covered in all circumstances.',
+    benefits: ['Tax exemption on maturity & payouts', 'Accidental death benefit riders', 'Flexible premium payment options'],
+    documents: ['Income verification (salary slips/ITR)', 'KYC documents', 'Medical report (if required)'],
+  },
+  {
+    title: 'Vehicle Insurance',
+    slug: 'vehicle-insurance',
+    description: 'Zero depreciation, third-party, and comprehensive policies for cars, two-wheelers, and commercial vehicles.',
+    features: ['Hassle-free cashless garage claims', 'Zero depreciation covers', 'Instant policy renewal'],
+    tag: 'Insurance',
+    icon: 'VI',
+    image: vehicleLoanImage,
+    interactiveComponent: VehicleLoanInteractive,
+    detail:
+      'Quick quotes and comparison for third-party and own damage insurance covers for cars, bikes, and business fleets.',
+    benefits: ['No claim bonus transfer assistance', '24/7 roadside assistance add-on', 'Engine protection and key replacement cover'],
+    documents: ['Previous policy details', 'Vehicle RC copy', 'Owner-driver KYC'],
+  },
+];
+
+export const supportServices = [
+  ...wealthServices,
+  ...fundServices,
+  ...insuranceServices,
 ];
 
 export const allServices = [
   ...loanServices.map((service) => ({ ...service, type: 'Loan Product' })),
-  ...supportServices.map((service) => ({
-    ...service,
-    type: 'Support Service',
-    description: service.detail,
-    features: service.benefits,
-    tag: service.icon,
-    detail:
-      `${service.detail} This service helps applicants reduce confusion and move through the loan journey with better preparation.`,
-    documents: ['Basic KYC', 'Applicant profile details', 'Existing loan or income details when applicable'],
-  })),
+  ...wealthServices.map((service) => ({ ...service, type: 'Wealth Management' })),
+  ...fundServices.map((service) => ({ ...service, type: 'Mutual Fund' })),
+  ...insuranceServices.map((service) => ({ ...service, type: 'Insurance' })),
 ];

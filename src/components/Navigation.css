@@ -1,16 +1,17 @@
 .site-header {
   position: fixed;
   top: 18px;
-  left: 17%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 50;
-  width: min(980px, calc(100% - 32px));
-  min-height: 64px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  width: min(920px, calc(100% - 28px));
+  min-height: 68px;
+  display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 8px 8px 8px 16px;
-  transform: translateX(-50%);
+  justify-content: center;
+  padding: 10px 16px;
   border: 1px solid rgba(16, 21, 19, 0.1);
   border-radius: 999px;
   background: rgba(255, 255, 250, 0.84);
@@ -19,10 +20,11 @@
 }
 
 .brand {
+  position: absolute;
+  left: 24px;
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: max-content;
   text-decoration: none;
 }
 
@@ -36,7 +38,7 @@
 
 .brand-text {
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0;
   white-space: nowrap;
 }
@@ -55,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 13px;
+  gap: 18px;
 }
 
 .nav-link {
@@ -95,6 +97,15 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.desktop-cta {
+  position: absolute;
+  right: 8px;
+}
+
+.mobile-cta {
+  display: none;
+}
+
 .nav-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 16px 34px rgba(16, 21, 19, 0.22);
@@ -129,27 +140,43 @@
 @keyframes navSlideRight {
   from {
     opacity: 0;
-    transform: translateX(calc(-50% + 40px));
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    transform: translateX(-50%);
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 980px) {
   /* Bottom sheet positioning handled by mobile.css */
   .site-header {
-    left: 50%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     width: min(760px, calc(100% - 24px));
-    grid-template-columns: auto auto;
+    display: flex;
     justify-content: space-between;
     padding: 8px 8px 8px 14px;
     animation: navSlideRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  .brand {
+    position: static;
+  }
+
+  .desktop-cta {
+    display: none;
+  }
+
+  .mobile-cta {
+    display: inline-flex;
+  }
+
   .nav-toggle {
     display: block;
+    position: static;
   }
 
   /* On tablet (980px) keep as dropdown, mobile.css overrides to bottom sheet at 768px */
@@ -159,7 +186,7 @@
     left: 0;
     right: 0;
     display: none;
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 6px;
     padding: 10px 10px 14px;
     border: 1px solid rgba(16, 21, 19, 0.1);
@@ -171,7 +198,7 @@
   }
 
   .nav-links.open {
-    display: grid;
+    display: flex;
     animation: mobileMenuOpen 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
@@ -179,6 +206,7 @@
   .nav-cta {
     width: 100%;
     justify-content: center;
+    position: static;
   }
 
   .nav-cta {

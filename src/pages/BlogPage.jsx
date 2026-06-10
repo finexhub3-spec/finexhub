@@ -102,10 +102,10 @@ function Highlight({ text, query }) {
 
 function BlogPage() {
   useSEO({
-    title: 'Loan Guide & Finance Insights — EMI Tips, Home Loan Advice, Loan Eligibility',
-    description: 'Read expert loan and finance guides from Bex Sigma Finance. Learn about EMI planning, home loan tips, business funding, credit scores, loan eligibility, and required documents for loan approval in India.',
+    title: 'Financial Guides & Insights — FinEx Hub Knowledge Base',
+    description: 'Read expert financial and loan guides from FinEx Hub. Learn about EMI planning, home loan tips, business funding, wealth management, mutual funds, and insurance requirements in India.',
     canonical: '/blog',
-    keywords: ['home loan guide India', 'how to get personal loan', 'loan eligibility tips', 'EMI planning', 'CIBIL score for loan', 'loan documents required', 'business loan tips India', 'finance guide India', 'Bex Sigma Finance blog'],
+    keywords: ['finance guide India', 'home loan guide India', 'how to get personal loan', 'loan eligibility tips', 'EMI planning', 'wealth management guide', 'mutual funds checklist', 'insurance tips', 'FinEx Hub blog'],
   });
 
   const [query, setQuery] = useState('');

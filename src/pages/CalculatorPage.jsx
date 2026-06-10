@@ -4,10 +4,10 @@ import { useSEO } from '../hooks/useSEO.js';
 
 function CalculatorPage() {
   useSEO({
-    title: 'Free EMI Calculator — Calculate Home Loan, Personal Loan EMI Online',
-    description: 'Use Bex Sigma Finance free EMI calculator to instantly calculate your monthly loan payments. Find the best EMI for home loans, personal loans, and business loans in India.',
+    title: 'Free EMI Calculator — Plan Your Monthly Payments Online',
+    description: 'Use FinEx Hub free EMI calculator to instantly calculate your monthly loan payments. Estimate EMIs for home loans, personal loans, business loans, and education loans in India.',
     canonical: '/calculator',
-    keywords: ['EMI calculator', 'home loan EMI', 'personal loan EMI calculator', 'loan calculator India', 'monthly loan payment', 'loan interest calculator', 'free EMI calculator online', 'Bex Sigma Finance calculator'],
+    keywords: ['EMI calculator', 'home loan EMI', 'personal loan EMI calculator', 'loan calculator India', 'monthly loan payment', 'loan interest calculator', 'free EMI calculator online', 'FinEx Hub calculator'],
   });
 
   return (

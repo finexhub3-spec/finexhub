@@ -7,9 +7,9 @@ function SupportServices() {
   return (
     <section className="section support-section" id="support">
       <div className="section-head readable-head">
-        <span className="eyebrow">Support system</span>
-        <h2>Everything around the application, organized.</h2>
-        <p>From consultation to document preparation, each support service is presented as a focused module.</p>
+        <span className="eyebrow">Wealth, Funds & Insurance</span>
+        <h2>Grow and secure your financial future.</h2>
+        <p>Explore our targeted wealth management, growth mutual funds, and custom insurance solutions.</p>
       </div>
       <div className="service-grid">
         {supportServices.map((service, index) => (

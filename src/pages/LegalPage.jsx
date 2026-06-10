@@ -12,7 +12,7 @@ const privacyPolicy = [
     title: 'Introduction',
     icon: '🛡️',
     content:
-      'BEx Sigma Finance ("Company") is committed to protecting the privacy and confidentiality of customer information. This Privacy Policy outlines how we collect, use, store, and protect your personal data in compliance with applicable regulations.',
+      'FinEx Hub ("Company") is committed to protecting the privacy and confidentiality of customer information. This Privacy Policy outlines how we collect, use, store, and protect your personal data in compliance with applicable regulations.',
   },
   {
     number: '02',
@@ -89,7 +89,7 @@ const privacyPolicy = [
     title: 'Contact',
     icon: '📧',
     content:
-      'For privacy concerns, data requests, or any queries related to this policy, please contact us at bexsigmatech@gmail.com. We are committed to addressing your concerns promptly.',
+      'For privacy concerns, data requests, or any queries related to this policy, please contact us at finexhub3@gmail.com. We are committed to addressing your concerns promptly.',
   },
 ];
 
@@ -100,7 +100,7 @@ const termsConditions = [
     title: 'Definitions',
     icon: '📖',
     content:
-      '"Company" refers to BEx Sigma Finance. "Borrower" includes the applicant, co-applicant, and guarantor where applicable. "Loan" encompasses personal loans, home loans, loan against property (LAP), business loans, and car/vehicle loans facilitated through the Company.',
+      '"Company" refers to FinEx Hub. "Borrower" includes the applicant, co-applicant, and guarantor where applicable. "Loan" encompasses personal loans, home loans, loan against property (LAP), business loans, and car/vehicle loans facilitated through the Company.',
   },
   {
     number: '02',
@@ -245,13 +245,13 @@ function LegalPage() {
         : 'Terms & Conditions — Loan Agreement Terms',
     description:
       activeTab === 'privacy'
-        ? 'BEx Sigma Finance Privacy Policy. Learn how we collect, use, and protect your personal data during loan processing. Compliant with IT Act and Indian data protection laws.'
-        : 'BEx Sigma Finance Terms & Conditions for loan services. Understand eligibility, repayment terms, interest rates, and borrower obligations.',
+        ? 'FinEx Hub Privacy Policy. Learn how we collect, use, and protect your personal data during loan processing. Compliant with IT Act and Indian data protection laws.'
+        : 'FinEx Hub Terms & Conditions for loan services. Understand eligibility, repayment terms, interest rates, and borrower obligations.',
     canonical: activeTab === 'privacy' ? '/legal' : '/legal',
     keywords:
       activeTab === 'privacy'
-        ? ['privacy policy', 'data protection', 'BEx Sigma Finance privacy', 'loan data security', 'customer privacy India']
-        : ['terms and conditions', 'loan terms', 'loan agreement', 'borrower obligations', 'BEx Sigma Finance terms'],
+        ? ['privacy policy', 'data protection', 'FinEx Hub privacy', 'loan data security', 'customer privacy India']
+        : ['terms and conditions', 'loan terms', 'loan agreement', 'borrower obligations', 'FinEx Hub terms'],
   });
 
   const sections = activeTab === 'privacy' ? privacyPolicy : termsConditions;
@@ -263,7 +263,7 @@ function LegalPage() {
         title={activeTab === 'privacy' ? 'Privacy Policy' : 'Terms & Conditions'}
       >
         {activeTab === 'privacy'
-          ? 'Your trust is our priority. Read how BEx Sigma Finance safeguards your personal information.'
+          ? 'Your trust is our priority. Read how FinEx Hub safeguards your personal information.'
           : 'Understand the terms governing our loan facilitation services and your rights as a borrower.'}
       </PageIntro>
 
