@@ -1,0 +1,42 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fdGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b45309;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldCoin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#fdGradient)"/>
+  <g transform="translate(50,50)">
+    <!-- Safe Vault Box -->
+    <rect x="100" y="50" width="200" height="180" rx="15" fill="#ffffff" stroke="#1e293b" stroke-width="4"/>
+    <rect x="115" y="65" width="170" height="150" rx="8" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+    
+    <!-- Safe Dial / Lock Mechanism -->
+    <circle cx="200" cy="140" r="45" fill="#94a3b8" stroke="#1e293b" stroke-width="4"/>
+    <circle cx="200" cy="140" r="30" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+    
+    <!-- Dial notches -->
+    <line x1="200" y1="98" x2="200" y2="105" stroke="#1e293b" stroke-width="3"/>
+    <line x1="200" y1="175" x2="200" y2="182" stroke="#1e293b" stroke-width="3"/>
+    <line x1="158" y1="140" x2="165" y2="140" stroke="#1e293b" stroke-width="3"/>
+    <line x1="235" y1="140" x2="242" y2="140" stroke="#1e293b" stroke-width="3"/>
+    
+    <!-- Dial center wheel handle -->
+    <circle cx="200" cy="140" r="10" fill="#475569" />
+    <line x1="200" y1="140" x2="185" y2="125" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="200" y1="140" x2="215" y2="125" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="200" y1="140" x2="200" y2="160" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Keyhole -->
+    <rect x="135" y="130" width="10" height="20" rx="2" fill="#1e293b"/>
+    <circle cx="140" cy="135" r="4" fill="#fbbf24"/>
+    
+    <!-- Gold Coin floating above safe -->
+    <circle cx="200" cy="25" r="15" fill="url(#goldCoin)" stroke="#d97706" stroke-width="1.5"/>
+    <text x="200" y="30" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">₹</text>
+  </g>
+</svg>

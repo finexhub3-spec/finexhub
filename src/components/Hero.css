@@ -55,7 +55,7 @@
 }
 
 .hero-copy h1 {
-  max-width: 14ch;
+  max-width: 24ch;
   margin: 20px auto 0;
   font-size: clamp(3rem, 9vw, 9.35rem);
   line-height: 0.88;
@@ -218,7 +218,7 @@
 /* New smooth animations */
 .hero-headline {
   position: relative;
-  max-width: 12ch;
+  max-width: 24ch;
   margin: 20px auto 0;
   font-size: clamp(4rem, 9vw, 9.35rem);
   line-height: 0.88;
@@ -316,7 +316,7 @@
   }
 
   .hero-copy h1 {
-    max-width: 11ch;
+    max-width: 24ch;
   }
 
   .hero-visual {
@@ -340,7 +340,7 @@
 
   .hero-headline {
     font-size: clamp(2.4rem, 11vw, 4.2rem);
-    max-width: 14ch;
+    max-width: 24ch;
     margin: 16px auto 0;
   }
 

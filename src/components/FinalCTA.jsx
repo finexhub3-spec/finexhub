@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import propertyLoanImage from '../images/property loan.webp';
+import readyImage from '../images/ready-to-begin.png';
 import ApplicationModal from './ApplicationModal';
 import './FinalCTA.css';
 
@@ -43,7 +43,7 @@ function FinalCTA() {
           </div>
           <img
             className="final-cta-image"
-            src={propertyLoanImage}
+            src={readyImage}
             alt="Premium loan services visual"
             loading="lazy"
             decoding="async"

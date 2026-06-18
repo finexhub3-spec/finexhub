@@ -49,7 +49,7 @@ function Hero() {
   const trustY = useTransform(scrollYProgress, [0, 0.58], [0, -58]);
   const trustOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.2]);
 
-  const headline = "Your Financial Growth,   is Our Commitment."
+  const headline = "One Hub. All your finance needs."
 
   return (
     <section className="section hero-section" id="home" ref={heroRef}>
@@ -76,18 +76,28 @@ function Hero() {
             initial="hidden"
             animate="visible"
           >
-            {headline.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                className="letter"
-                variants={letterVariants}
+            {headline.split(' ').map((word, wordIndex) => (
+              <span
+                key={wordIndex}
                 style={{
-                  display: char === ' ' ? 'inline' : 'inline-block',
-                  minWidth: char === ' ' ? '0.25em' : 'auto',
+                  display: 'inline-block',
+                  whiteSpace: 'nowrap',
+                  marginRight: '0.25em',
                 }}
               >
-                {char}
-              </motion.span>
+                {word.split('').map((char, charIndex) => (
+                  <motion.span
+                    key={charIndex}
+                    className="letter"
+                    variants={letterVariants}
+                    style={{
+                      display: 'inline-block',
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
             ))}
           </motion.h1>
           

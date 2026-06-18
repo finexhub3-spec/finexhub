@@ -714,9 +714,18 @@
   }
   .lt2-stats {
     width: 100%;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
-  .lt2-stat { flex: 1; min-width: 80px; }
+  .lt2-stat {
+    min-width: 0;
+    padding: 12px 10px;
+  }
+  .lt2-stat span {
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+  }
   .lt2-card-chips { flex-direction: row; }
 }
 

@@ -3,6 +3,12 @@ import personalLoanImage from '../images/personal-loan.svg';
 import businessLoanImage from '../images/business-loan.svg';
 import vehicleLoanImage from '../images/vehicle-loan.svg';
 import propertyLoanImage from '../images/loan-against-property.svg';
+import propertyLoanWebP from '../images/property loan.webp';
+import fdImage from '../images/fixed-deposit.svg';
+import rdImage from '../images/recurring-deposit.svg';
+import educationLoanImage from '../images/education-loan.svg';
+import healthInsuranceImage from '../images/health-insurance.svg';
+import lifeInsuranceImage from '../images/life-insurance.svg';
 import {
   HomeLoanInteractive,
   PersonalLoanInteractive,
@@ -39,7 +45,7 @@ export const loanServices = [
     features: ['Lower interest than personal loans', 'Long repayment tenure', 'Ideal for large expenses'],
     tag: 'Property',
     icon: 'LAP',
-    image: propertyLoanImage,
+    image: propertyLoanWebP,
     interactiveComponent: LoanAgainstPropertyInteractive,
     detail:
       'Loan against property support for large funding needs where an owned residential or commercial property can help secure better rates and longer tenure.',
@@ -81,8 +87,8 @@ export const loanServices = [
     features: ['High loan limits', 'Flexible moratorium period', 'Co-applicant flexibility'],
     tag: 'Education',
     icon: 'EL',
-    image: personalLoanImage,
-    interactiveComponent: PersonalLoanInteractive,
+    image: educationLoanImage,
+    interactiveComponent: null,
     detail:
       'Structured education loan support for students looking for admissions in India or abroad. Covers complete educational expenses, with competitive rates and student-friendly repayment terms.',
     benefits: ['Covers up to 100% of education expenses', 'Tax benefits under Section 80E', 'Customized repayment structures'],
@@ -112,8 +118,8 @@ export const wealthServices = [
     features: ['Guaranteed returns', 'Flexible tenure choices', 'Loan/Overdraft facility'],
     tag: 'Wealth',
     icon: 'FD',
-    image: propertyLoanImage,
-    interactiveComponent: EMIEligibilityInteractive,
+    image: fdImage,
+    interactiveComponent: null,
     detail:
       'Assist in finding and booking the highest yielding Fixed Deposits across partner banks and corporate entities, ensuring safety and growth of capital.',
     benefits: ['Higher interest for senior citizens', 'Flexible payout intervals (monthly/quarterly)', 'Premature withdrawal option'],
@@ -126,8 +132,8 @@ export const wealthServices = [
     features: ['Disciplined monthly savings', 'Compounded interest growth', 'Low minimum starting amount'],
     tag: 'Wealth',
     icon: 'RD',
-    image: propertyLoanImage,
-    interactiveComponent: EMIEligibilityInteractive,
+    image: rdImage,
+    interactiveComponent: null,
     detail:
       'Facilitate systematic monthly savings plan setup with top financial institutions, helping you build wealth incrementally.',
     benefits: ['Automated monthly savings', 'Higher returns than savings accounts', 'Tenure options from 12 to 120 months'],
@@ -143,8 +149,8 @@ export const fundServices = [
     features: ['Goal-targeted portfolios', 'SIP or lump sum investments', 'Inflation-adjusted projections'],
     tag: 'Funds',
     icon: 'CEP',
-    image: personalLoanImage,
-    interactiveComponent: BalanceTransferInteractive,
+    image: rdImage,
+    interactiveComponent: null,
     detail:
       'Personalized mutual fund selection tailored to meet the future cost of higher education, balancing risk and long-term capital appreciation.',
     benefits: ['Tax efficient wealth growth', 'Diversified mutual fund selection', 'Automatic rebalancing support'],
@@ -157,8 +163,8 @@ export const fundServices = [
     features: ['Long-term wealth compounding', 'Tax savings under Section 80C', 'Customizable withdrawal plans (SWP)'],
     tag: 'Funds',
     icon: 'RP',
-    image: personalLoanImage,
-    interactiveComponent: BalanceTransferInteractive,
+    image: fdImage,
+    interactiveComponent: null,
     detail:
       'Strategic retirement asset allocation mapping to ensure financial independence, with systematic investment and pension planning.',
     benefits: ['Diversified mutual fund basket', 'Systematic withdrawal plans post-retirement', 'Inflation protection'],
@@ -174,8 +180,8 @@ export const insuranceServices = [
     features: ['Cashless treatment at network hospitals', 'Tax benefits under Sec 80D', 'Pre and post-hospitalization cover'],
     tag: 'Insurance',
     icon: 'HI',
-    image: businessLoanImage,
-    interactiveComponent: LoanConsultationInteractive,
+    image: healthInsuranceImage,
+    interactiveComponent: null,
     detail:
       'Profile-based health insurance advisory with cashless hospital networks, quick claim assistance, and maximum cover benefits.',
     benefits: ['No claim bonus protection', 'Critical illness add-ons', 'Comprehensive family floater options'],
@@ -188,8 +194,8 @@ export const insuranceServices = [
     features: ['Affordable term insurance premiums', 'High sum assured protection', 'Critical illness riders'],
     tag: 'Insurance',
     icon: 'LI',
-    image: businessLoanImage,
-    interactiveComponent: LoanConsultationInteractive,
+    image: lifeInsuranceImage,
+    interactiveComponent: null,
     detail:
       'Structured life cover planning to secure your family\'s future, ensuring outstanding liabilities are covered in all circumstances.',
     benefits: ['Tax exemption on maturity & payouts', 'Accidental death benefit riders', 'Flexible premium payment options'],

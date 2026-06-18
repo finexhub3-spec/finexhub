@@ -87,15 +87,15 @@ const STATS = [
 ];
 
 const SERVICE_META = {
-  'home-loan':             { ring: 92, ringLabel: 'Eligibility', rate: '8.50%*', tenure: '30 yrs', color: '#bdf26d' },
-  'loan-against-property': { ring: 85, ringLabel: 'LTV Ratio',  rate: '9.20%*', tenure: '20 yrs', color: '#65d6ad' },
-  'business-loan':         { ring: 78, ringLabel: 'Approval',   rate: '11.0%*', tenure: '7 yrs',  color: '#f9b84b' },
-  'personal-loan':         { ring: 89, ringLabel: 'Match Score', rate: '10.5%*', tenure: '5 yrs',  color: '#a78bfa' },
-  'education-loan':        { ring: 90, ringLabel: 'Approval',   rate: '9.50%*', tenure: '15 yrs', color: '#ec4899' },
-  'vehicle-loan':          { ring: 95, ringLabel: 'Coverage',   rate: '8.80%*', tenure: '7 yrs',  color: '#38bdf8' },
+  'home-loan':             { ring: 92, ringLabel: 'Eligibility', rate: '8.50%*', tenure: 'Up to 30 Years', color: '#bdf26d' },
+  'loan-against-property': { ring: 85, ringLabel: 'LTV Ratio',  rate: '9.20%*', tenure: 'Up to 20 Years', color: '#65d6ad' },
+  'business-loan':         { ring: 78, ringLabel: 'Approval',   rate: '11.0%*', tenure: 'Up to 15 Years', color: '#f9b84b' },
+  'personal-loan':         { ring: 89, ringLabel: 'Match Score', rate: '10.5%*', tenure: 'Up to 7 Years',  color: '#a78bfa' },
+  'education-loan':        { ring: 90, ringLabel: 'Approval',   rate: '9.50%*', tenure: 'Up to 15 Years', color: '#ec4899' },
+  'vehicle-loan':          { ring: 95, ringLabel: 'Coverage',   rate: '8.80%*', tenure: 'Up to 8 Years',  color: '#38bdf8' },
 
-  'fixed-deposit':         { ring: 98, ringLabel: 'Safety',     rate: '7.75%*', tenure: '5 yrs',  color: '#bdf26d' },
-  'recurring-deposit':     { ring: 96, ringLabel: 'Safety',     rate: '7.50%*', tenure: '10 yrs', color: '#65d6ad' },
+  'fixed-deposit':         { ring: 98, ringLabel: 'Safety',     rate: '12%*', tenure: '21 to 120 Months',  color: '#bdf26d' },
+  'recurring-deposit':     { ring: 96, ringLabel: 'Safety',     rate: '12%*', tenure: '21 to 120 Months', color: '#65d6ad' },
 
   'child-education':       { ring: 94, ringLabel: 'Return Est', rate: '12.5%*', tenure: '15 yrs', color: '#a78bfa' },
   'retirement-planning':   { ring: 92, ringLabel: 'Return Est', rate: '13.0%*', tenure: '25 yrs', color: '#f9b84b' },
@@ -305,14 +305,45 @@ export default function LoanTypes() {
 
                   {/* floating stats chips on image */}
                   <div className="lt2-card-chips">
-                    <div className="lt2-chip">
-                      <span className="lt2-chip-label">Rate / Payout</span>
-                      <span className="lt2-chip-val">{meta.rate}</span>
-                    </div>
-                    <div className="lt2-chip">
-                      <span className="lt2-chip-label">Tenure</span>
-                      <span className="lt2-chip-val">{meta.tenure}</span>
-                    </div>
+                    {activeCategory === 'loans' && (
+                      <>
+                        <div className="lt2-chip">
+                          <span className="lt2-chip-label">Interest Rate / EMI</span>
+                          <span className="lt2-chip-val">{meta.rate}</span>
+                        </div>
+                        <div className="lt2-chip">
+                          <span className="lt2-chip-label">Tenure</span>
+                          <span className="lt2-chip-val">{meta.tenure}</span>
+                        </div>
+                      </>
+                    )}
+                    {activeCategory === 'wealth' && (
+                      <>
+                        <div className="lt2-chip">
+                          <span className="lt2-chip-label">Interest Rate</span>
+                          <span className="lt2-chip-val">{meta.rate}</span>
+                        </div>
+                        <div className="lt2-chip">
+                          <span className="lt2-chip-label">Tenure</span>
+                          <span className="lt2-chip-val">{meta.tenure}</span>
+                        </div>
+                      </>
+                    )}
+                    {activeCategory === 'insurance' && (
+                      <div className="lt2-chip" style={{ minWidth: '180px', maxWidth: '280px' }}>
+                        <span className="lt2-chip-label">
+                          {active.slug === 'health-insurance' && 'Cover & Premium'}
+                          {active.slug === 'life-insurance' && 'Term Plan Cover'}
+                          {active.slug === 'vehicle-insurance' && 'Renewal Benefit'}
+                        </span>
+                        <span className="lt2-chip-val" style={{ fontSize: '0.82rem', whiteSpace: 'normal', lineHeight: '1.2' }}>
+                          {active.slug === 'health-insurance' && '₹10 Lakh Cover @ ₹499/Month'}
+                          {active.slug === 'life-insurance' && '₹1.5 Cr Term Plan @ ₹6,499/Year'}
+                          {active.slug === 'vehicle-insurance' && 'Save Up To 85% on Renewal'}
+                        </span>
+                      </div>
+                    )}
+                    {/* For funds, we don't render any chips */}
                   </div>
                 </div>
 
@@ -361,12 +392,36 @@ export default function LoanTypes() {
                   </div>
 
                   <div className="lt2-card-footer">
-                    <Link className="lt2-card-cta" to={`/services/${active.slug}`}>
-                      Explore {active.title}
-                      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
+                    {activeCategory === 'funds' ? (
+                      <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                        <Link className="lt2-card-cta" to={`/services/${active.slug}`}>
+                          Explore {active.title}
+                        </Link>
+                        <a 
+                          className="lt2-card-cta" 
+                          href={active.slug === 'child-education' ? 'https://groww.in/calculators/sip-calculator' : 'https://groww.in/calculators/swp-calculator'} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          style={{
+                            background: 'linear-gradient(135deg, #bdf26d, #65d6ad)',
+                            color: '#101513',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          {active.slug === 'child-education' ? 'SIP Calculator' : 'SWP Calculator'}
+                          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" style={{ stroke: '#101513' }}>
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </a>
+                      </div>
+                    ) : (
+                      <Link className="lt2-card-cta" to={`/services/${active.slug}`}>
+                        Explore {active.title}
+                        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                    )}
 
                     <div className="lt2-dots" aria-label="Service navigation dots">
                       {services.map((_, i) => (
