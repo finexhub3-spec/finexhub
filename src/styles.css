@@ -134,6 +134,7 @@ mark {
 h1,
 h2,
 h3 {
+  font-family: 'Outfit', sans-serif;
   margin: 0;
   line-height: 1.08;
   letter-spacing: 0;

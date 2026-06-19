@@ -37,20 +37,23 @@
 }
 
 .brand-text {
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .bex {
   color: #101513;
-  font-weight: 900;
 }
 
 .sigma {
-  color: rgba(16, 21, 19, 0.58);
-  margin-left: 4px;
+  color: #1f7a58;
+  margin-left: 3px;
 }
 
 .nav-links {
