@@ -258,6 +258,96 @@ ul li::before {
   box-shadow: 0 0 0 4px rgba(189, 242, 109, 0.18);
 }
 
+/* Category Filters Styling */
+.category-filters-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  width: 100%;
+  overflow: visible;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 1000px;
+}
+
+.category-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  outline: none;
+  user-select: none;
+  z-index: 1;
+  transition: border-color 0.24s ease, color 0.24s ease, transform 0.2s ease;
+}
+
+.category-chip:hover {
+  border-color: var(--gold);
+  color: var(--text);
+}
+
+.category-chip.active {
+  color: var(--green);
+  border-color: transparent;
+}
+
+.active-pill-bg {
+  position: absolute;
+  inset: -1px; /* Cover border area too */
+  background: var(--surface-strong);
+  border-radius: 999px;
+  z-index: -1;
+  border: 1px solid var(--green);
+  box-shadow: 0 8px 24px rgba(189, 242, 109, 0.15);
+}
+
+.chip-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Make category pills scrollable horizontally on mobile */
+@media (max-width: 720px) {
+  .category-filters-container {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 30px;
+    /* Hide scrollbar for standard browsers */
+    scrollbar-width: none; 
+  }
+  
+  .category-filters-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+
+  .category-filters {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-left: 4px;
+    padding-right: 20px;
+  }
+  
+  .category-chip {
+    white-space: nowrap;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
 .article-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

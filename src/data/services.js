@@ -1,27 +1,15 @@
-import homeLoanImage from '../images/home-loan.svg';
-import personalLoanImage from '../images/personal-loan.svg';
-import businessLoanImage from '../images/business-loan.svg';
-import vehicleLoanImage from '../images/vehicle-loan.svg';
-import propertyLoanImage from '../images/loan-against-property.svg';
-import propertyLoanWebP from '../images/property loan.webp';
-import fdImage from '../images/fixed-deposit.svg';
-import rdImage from '../images/recurring-deposit.svg';
-import educationLoanImage from '../images/education-loan.svg';
-import healthInsuranceImage from '../images/health-insurance.svg';
-import lifeInsuranceImage from '../images/life-insurance.svg';
-import {
-  HomeLoanInteractive,
-  PersonalLoanInteractive,
-  BusinessLoanInteractive,
-  VehicleLoanInteractive,
-  LoanAgainstPropertyInteractive,
-  LoanConsultationInteractive,
-  DocumentationSupportInteractive,
-  BankTieupsInteractive,
-  FastApprovalInteractive,
-  EMIEligibilityInteractive,
-  BalanceTransferInteractive,
-} from '../components/interactive-images';
+import homeLoanImage from '../images/home-loan.png';
+import personalLoanImage from '../images/personal-loan.png';
+import businessLoanImage from '../images/business-loan.png';
+import vehicleLoanImage from '../images/vehicle-loan.png';
+import propertyLoanImage from '../images/property-loan.png';
+import fdImage from '../images/fixed-deposit.png';
+import rdImage from '../images/recurring-deposit.png';
+import childEducationImage from '../images/child-education.png';
+import retirementPlanningImage from '../images/retirement-planning.png';
+import educationLoanImage from '../images/education-loan.png';
+import healthInsuranceImage from '../images/health-insurance.png';
+import lifeInsuranceImage from '../images/life-insurance.png';
 
 export const loanServices = [
   {
@@ -32,7 +20,7 @@ export const loanServices = [
     tag: 'Home',
     icon: 'HL',
     image: homeLoanImage,
-    interactiveComponent: HomeLoanInteractive,
+    interactiveComponent: null,
     detail:
       'Home loan support for salaried and self-employed applicants who want clear eligibility checks, bank comparison, EMI planning, and document guidance before applying.',
     benefits: ['Property purchase and construction support', 'Balance transfer review', 'Top-up and renovation options'],
@@ -45,8 +33,8 @@ export const loanServices = [
     features: ['Lower interest than personal loans', 'Long repayment tenure', 'Ideal for large expenses'],
     tag: 'Property',
     icon: 'LAP',
-    image: propertyLoanWebP,
-    interactiveComponent: LoanAgainstPropertyInteractive,
+    image: propertyLoanImage,
+    interactiveComponent: null,
     detail:
       'Loan against property support for large funding needs where an owned residential or commercial property can help secure better rates and longer tenure.',
     benefits: ['Higher loan amount potential', 'Useful for business or personal needs', 'Longer repayment window'],
@@ -60,7 +48,7 @@ export const loanServices = [
     tag: 'Business',
     icon: 'BL',
     image: businessLoanImage,
-    interactiveComponent: BusinessLoanInteractive,
+    interactiveComponent: null,
     detail:
       'Business loan guidance for working capital, expansion, machinery, inventory, and MSME funding, with attention to cash flow and repayment comfort.',
     benefits: ['Working capital and expansion funding', 'MSME and professional loan options', 'Secured and unsecured choices'],
@@ -74,7 +62,7 @@ export const loanServices = [
     tag: 'Personal',
     icon: 'PL',
     image: personalLoanImage,
-    interactiveComponent: PersonalLoanInteractive,
+    interactiveComponent: null,
     detail:
       'Personal loan assistance for quick unsecured funding, with lender matching based on income, credit score, existing EMI load, and required disbursal speed.',
     benefits: ['Emergency and planned expense funding', 'No collateral requirement', 'Multiple bank and NBFC options'],
@@ -102,7 +90,7 @@ export const loanServices = [
     tag: 'Vehicle',
     icon: 'VL',
     image: vehicleLoanImage,
-    interactiveComponent: VehicleLoanInteractive,
+    interactiveComponent: null,
     detail:
       'Vehicle loan support for new, used, and commercial vehicles, including loan amount planning, down payment review, and fast lender comparison.',
     benefits: ['New and used vehicle funding', 'Commercial vehicle options', 'Flexible down payment planning'],
@@ -149,7 +137,7 @@ export const fundServices = [
     features: ['Goal-targeted portfolios', 'SIP or lump sum investments', 'Inflation-adjusted projections'],
     tag: 'Funds',
     icon: 'CEP',
-    image: rdImage,
+    image: childEducationImage,
     interactiveComponent: null,
     detail:
       'Personalized mutual fund selection tailored to meet the future cost of higher education, balancing risk and long-term capital appreciation.',
@@ -163,7 +151,7 @@ export const fundServices = [
     features: ['Long-term wealth compounding', 'Tax savings under Section 80C', 'Customizable withdrawal plans (SWP)'],
     tag: 'Funds',
     icon: 'RP',
-    image: fdImage,
+    image: retirementPlanningImage,
     interactiveComponent: null,
     detail:
       'Strategic retirement asset allocation mapping to ensure financial independence, with systematic investment and pension planning.',
@@ -209,7 +197,7 @@ export const insuranceServices = [
     tag: 'Insurance',
     icon: 'VI',
     image: vehicleLoanImage,
-    interactiveComponent: VehicleLoanInteractive,
+    interactiveComponent: null,
     detail:
       'Quick quotes and comparison for third-party and own damage insurance covers for cars, bikes, and business fleets.',
     benefits: ['No claim bonus transfer assistance', '24/7 roadside assistance add-on', 'Engine protection and key replacement cover'],
