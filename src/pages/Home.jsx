@@ -11,7 +11,7 @@ import { useSEO } from '../hooks/useSEO.js';
 
 function Home() {
   useSEO({
-    title: 'Premium Finance & Loan Consultancy India',
+    title: "FinEx Hub — India's Premier Finance & Loan Consultancy",
     description: "FinEx Hub is India's trusted finance and loan consultancy. Get expert guidance on home loans, LAP, business loans, vehicle loans, wealth management, mutual funds, and insurance. Compare, plan, and apply.",
     canonical: '/',
     keywords: ['finance company India', 'loan consultancy India', 'home loan', 'personal loan', 'business loan', 'EMI calculator', 'loan approval', 'NBFC loans', 'fast loan approval India', 'best loan rates', 'finance services', 'FinEx Hub', 'wealth management India', 'mutual funds planning', 'insurance agent'],

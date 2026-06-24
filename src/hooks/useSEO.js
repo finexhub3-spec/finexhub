@@ -12,7 +12,9 @@ import { useEffect } from 'react';
 export function useSEO({ title, description, canonical, keywords }) {
   useEffect(() => {
     const brand = 'FinEx Hub';
-    const fullTitle = title ? `${title} | ${brand}` : `${brand} — Finance, Loans & Wealth Management India`;
+    const fullTitle = title
+      ? (title.includes(brand) ? title : `${title} | ${brand}`)
+      : `${brand} — Finance, Loans & Wealth Management India`;
 
     // Title
     document.title = fullTitle;

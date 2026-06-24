@@ -1,11 +1,19 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { allServices } from '../data/services.js';
+import { useSEO } from '../hooks/useSEO.js';
 import './ServiceDetail.css';
 
 function ServiceDetail() {
   const { serviceSlug } = useParams();
   const service = allServices.find((item) => item.slug === serviceSlug);
+
+  useSEO({
+    title: service ? `${service.title} Advisory` : 'Service Not Found',
+    description: service ? (service.description || service.detail) : 'Explore financial services by FinEx Hub.',
+    canonical: `/services/${serviceSlug}`,
+    keywords: service ? [service.title.toLowerCase(), `${service.title.toLowerCase()} service`, 'FinEx Hub'] : ['finance services', 'FinEx Hub'],
+  });
 
   if (!service) {
     return (
