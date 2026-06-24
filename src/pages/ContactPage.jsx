@@ -7,7 +7,7 @@ import './ContactPage.css';
 
 function ContactPage() {
   useSEO({
-    title: 'Contact Us — FinEx Hub Finance Consultation',
+    title: 'Contact Us — Finance Consultation',
     description: 'Contact FinEx Hub for expert loan and finance consultation. Apply for home loan, personal loan, or business loan. Call +91 8940779023, +91 9626900913, +91 9445534914 or email finexhub3@gmail.com.',
     canonical: '/contact',
     keywords: ['contact finance consultant India', 'apply for home loan', 'loan consultation', 'finance advisor contact', 'apply personal loan India', 'FinEx Hub contact'],

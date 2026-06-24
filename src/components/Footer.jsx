@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../images/logo_mark.png';
+import logo from '../images/logo_mark.jpg';
 import './Footer.css';
 
 const footerLinks = ['Services', 'Calculator', 'Process', 'Blog', 'Contact'];
