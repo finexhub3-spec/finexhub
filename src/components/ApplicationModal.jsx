@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Toast from './Toast.jsx';
@@ -39,12 +39,197 @@ function ApplicationModal({ isOpen, onClose }) {
   const [submitStatus, setSubmitStatus] = useState(null);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [toast, setToast] = useState({ show: false, message: '', type: 'success' });
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (!isOpen) {
+      setStep(1);
+      setSubmitStatus(null);
+      setAgreedToTerms(false);
+      setErrors({});
+      setFormData({
+        fullName: '', email: '', phone: '', dateOfBirth: '', panNumber: '', aadhaarNumber: '',
+        employmentType: '', monthlyIncome: '', companyName: '', workExperience: '',
+        loanType: '', loanAmount: '', tenure: '', purpose: '',
+        currentAddress: '', city: '', state: '', pincode: '',
+      });
+    }
+  }, [isOpen]);
+
+  const validateField = (name, value) => {
+    let errorMsg = null;
+    const trimmedVal = (value || '').toString().trim();
+
+    switch (name) {
+      case 'fullName':
+        if (!trimmedVal) {
+          errorMsg = 'Full Name is required.';
+        } else if (!/^[a-zA-Z\s]{2,50}$/.test(trimmedVal)) {
+          errorMsg = 'Name must be at least 2 characters and contain only letters.';
+        }
+        break;
+      case 'email':
+        if (!trimmedVal) {
+          errorMsg = 'Email Address is required.';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedVal)) {
+          errorMsg = 'Please enter a valid email address.';
+        }
+        break;
+      case 'phone':
+        if (!trimmedVal) {
+          errorMsg = 'Phone Number is required.';
+        } else if (!/^[6-9]\d{9}$/.test(trimmedVal)) {
+          errorMsg = 'Please enter a valid 10-digit mobile number starting with 6-9.';
+        }
+        break;
+      case 'dateOfBirth':
+        if (!trimmedVal) {
+          errorMsg = 'Date of Birth is required.';
+        } else {
+          const dob = new Date(trimmedVal);
+          const today = new Date();
+          
+          let age = today.getFullYear() - dob.getFullYear();
+          const m = today.getMonth() - dob.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
+            age--;
+          }
+          
+          if (isNaN(dob.getTime())) {
+            errorMsg = 'Please enter a valid date.';
+          } else if (dob > today) {
+            errorMsg = 'Date of Birth cannot be in the future.';
+          } else if (age < 18) {
+            errorMsg = 'Applicant must be at least 18 years old.';
+          } else if (age > 100) {
+            errorMsg = 'Please enter a valid age (under 100).';
+          }
+        }
+        break;
+      case 'panNumber':
+        if (!trimmedVal) {
+          errorMsg = 'PAN Number is required.';
+        } else if (!/^[A-Z]{5}\d{4}[A-Z]{1}$/.test(trimmedVal.toUpperCase())) {
+          errorMsg = 'Invalid PAN format. Must be like ABCDE1234F.';
+        }
+        break;
+      case 'aadhaarNumber': {
+        const rawAadhaar = trimmedVal.replace(/\s/g, '');
+        if (!trimmedVal) {
+          errorMsg = 'Aadhaar Number is required.';
+        } else if (!/^\d{12}$/.test(rawAadhaar)) {
+          errorMsg = 'Aadhaar must be a 12-digit number.';
+        }
+        break;
+      }
+      case 'employmentType':
+        if (!trimmedVal) errorMsg = 'Please select employment type.';
+        break;
+      case 'monthlyIncome':
+        if (!trimmedVal) {
+          errorMsg = 'Monthly Income is required.';
+        } else {
+          const income = parseFloat(trimmedVal);
+          if (isNaN(income) || income < 15000) {
+            errorMsg = 'Monthly Income must be at least ₹15,000.';
+          }
+        }
+        break;
+      case 'companyName':
+        if (!trimmedVal) errorMsg = 'Company Name is required.';
+        break;
+      case 'workExperience':
+        if (trimmedVal === '') {
+          errorMsg = 'Work experience is required.';
+        } else {
+          const exp = parseFloat(trimmedVal);
+          if (isNaN(exp) || exp < 0) {
+            errorMsg = 'Work experience must be 0 or more years.';
+          }
+        }
+        break;
+      case 'loanType':
+        if (!trimmedVal) errorMsg = 'Please select a service type.';
+        break;
+      case 'loanAmount':
+        if (!trimmedVal) {
+          errorMsg = 'Loan Amount is required.';
+        } else {
+          const amt = parseFloat(trimmedVal);
+          if (isNaN(amt) || amt < 50000) {
+            errorMsg = 'Loan Amount must be at least ₹50,000.';
+          }
+        }
+        break;
+      case 'tenure':
+        if (!trimmedVal) errorMsg = 'Please select tenure.';
+        break;
+      case 'purpose':
+        if (!trimmedVal) errorMsg = 'Please select purpose.';
+        break;
+      case 'currentAddress':
+        if (!trimmedVal) errorMsg = 'Current Address is required.';
+        break;
+      case 'city':
+        if (!trimmedVal) {
+          errorMsg = 'City is required.';
+        } else if (!/^[a-zA-Z\s]{2,50}$/.test(trimmedVal)) {
+          errorMsg = 'City should only contain letters.';
+        }
+        break;
+      case 'state':
+        if (!trimmedVal) errorMsg = 'Please select a state.';
+        break;
+      case 'pincode':
+        if (!trimmedVal) {
+          errorMsg = 'Pincode is required.';
+        } else if (!/^\d{6}$/.test(trimmedVal)) {
+          errorMsg = 'Pincode must be exactly 6 digits.';
+        }
+        break;
+      default:
+        break;
+    }
+
+    return errorMsg;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    let cleanValue = value;
+
+    if (name === 'phone') {
+      cleanValue = value.replace(/\D/g, '').slice(0, 10);
+    } else if (name === 'panNumber') {
+      cleanValue = value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, 10);
+    } else if (name === 'aadhaarNumber') {
+      const digitsOnly = value.replace(/\D/g, '').slice(0, 12);
+      const match = digitsOnly.match(/.{1,4}/g);
+      cleanValue = match ? match.join(' ') : digitsOnly;
+    } else if (name === 'pincode') {
+      cleanValue = value.replace(/\D/g, '').slice(0, 6);
+    }
+
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: cleanValue
+    }));
+
+    if (errors[name]) {
+      const errorMsg = validateField(name, cleanValue);
+      setErrors(prev => ({
+        ...prev,
+        [name]: errorMsg
+      }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const errorMsg = validateField(name, value);
+    setErrors(prev => ({
+      ...prev,
+      [name]: errorMsg
     }));
   };
 
@@ -56,11 +241,14 @@ function ApplicationModal({ isOpen, onClose }) {
     4: ['currentAddress', 'city', 'state', 'pincode'],
   };
 
-  // Check if all required fields for a given step are filled
+  // Check if all required fields for a given step are filled and valid
   const isStepValid = (stepNum) => {
     const fields = requiredFieldsByStep[stepNum];
-    if (!fields) return true; // Step 5 (Review) has no input fields
-    return fields.every((field) => formData[field].toString().trim() !== '');
+    if (!fields) return true;
+    return fields.every((field) => {
+      const val = formData[field];
+      return val.toString().trim() !== '' && validateField(field, val) === null;
+    });
   };
 
   // Check if ALL steps are valid (for submit)
@@ -69,10 +257,28 @@ function ApplicationModal({ isOpen, onClose }) {
   };
 
   const nextStep = () => {
-    if (!isStepValid(step)) {
+    const fields = requiredFieldsByStep[step];
+    let stepHasErrors = false;
+    const newErrors = { ...errors };
+
+    if (fields) {
+      fields.forEach((field) => {
+        const errorMsg = validateField(field, formData[field]);
+        if (errorMsg) {
+          newErrors[field] = errorMsg;
+          stepHasErrors = true;
+        } else {
+          delete newErrors[field];
+        }
+      });
+    }
+
+    setErrors(newErrors);
+
+    if (stepHasErrors) {
       setToast({
         show: true,
-        message: 'Please fill in all required fields before proceeding.',
+        message: 'Please resolve all validation errors before proceeding.',
         type: 'error'
       });
       return;
@@ -224,72 +430,82 @@ function ApplicationModal({ isOpen, onClose }) {
               >
                 <h3>Personal Information</h3>
                 <div className="form-grid">
-                  <div className="form-group">
+                  <div className={`form-group ${errors.fullName ? 'has-error' : ''}`}>
                     <label>Full Name *</label>
                     <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="Enter your full name"
                     />
+                    {errors.fullName && <span className="error-message">{errors.fullName}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.email ? 'has-error' : ''}`}>
                     <label>Email Address *</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="your@email.com"
                     />
+                    {errors.email && <span className="error-message">{errors.email}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.phone ? 'has-error' : ''}`}>
                     <label>Phone Number *</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="+91 XXXXX XXXXX"
                     />
+                    {errors.phone && <span className="error-message">{errors.phone}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.dateOfBirth ? 'has-error' : ''}`}>
                     <label>Date of Birth *</label>
                     <input
                       type="date"
                       name="dateOfBirth"
                       value={formData.dateOfBirth}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     />
+                    {errors.dateOfBirth && <span className="error-message">{errors.dateOfBirth}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.panNumber ? 'has-error' : ''}`}>
                     <label>PAN Number *</label>
                     <input
                       type="text"
                       name="panNumber"
                       value={formData.panNumber}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="AAAAA0000A"
-                      pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
                     />
+                    {errors.panNumber && <span className="error-message">{errors.panNumber}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.aadhaarNumber ? 'has-error' : ''}`}>
                     <label>Aadhaar Number *</label>
                     <input
                       type="text"
                       name="aadhaarNumber"
                       value={formData.aadhaarNumber}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="XXXX XXXX XXXX"
-                      pattern="[0-9]{4} [0-9]{4} [0-9]{4}"
                     />
+                    {errors.aadhaarNumber && <span className="error-message">{errors.aadhaarNumber}</span>}
                   </div>
                 </div>
               </motion.div>
@@ -306,12 +522,13 @@ function ApplicationModal({ isOpen, onClose }) {
               >
                 <h3>Employment Details</h3>
                 <div className="form-grid">
-                  <div className="form-group">
+                  <div className={`form-group ${errors.employmentType ? 'has-error' : ''}`}>
                     <label>Employment Type *</label>
                     <select
                       name="employmentType"
                       value={formData.employmentType}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     >
                       <option value="">Select employment type</option>
@@ -320,41 +537,48 @@ function ApplicationModal({ isOpen, onClose }) {
                       <option value="business-owner">Business Owner</option>
                       <option value="professional">Professional</option>
                     </select>
+                    {errors.employmentType && <span className="error-message">{errors.employmentType}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.monthlyIncome ? 'has-error' : ''}`}>
                     <label>Monthly Income (₹) *</label>
                     <input
                       type="number"
                       name="monthlyIncome"
                       value={formData.monthlyIncome}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="50000"
                       min="15000"
                     />
+                    {errors.monthlyIncome && <span className="error-message">{errors.monthlyIncome}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.companyName ? 'has-error' : ''}`}>
                     <label>Company Name *</label>
                     <input
                       type="text"
                       name="companyName"
                       value={formData.companyName}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="Enter company name"
                     />
+                    {errors.companyName && <span className="error-message">{errors.companyName}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.workExperience ? 'has-error' : ''}`}>
                     <label>Work Experience (Years) *</label>
                     <input
                       type="number"
                       name="workExperience"
                       value={formData.workExperience}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="2"
                       min="0"
                     />
+                    {errors.workExperience && <span className="error-message">{errors.workExperience}</span>}
                   </div>
                 </div>
               </motion.div>
@@ -371,12 +595,13 @@ function ApplicationModal({ isOpen, onClose }) {
               >
                 <h3>Loan Details</h3>
                 <div className="form-grid">
-                  <div className="form-group">
+                  <div className={`form-group ${errors.loanType ? 'has-error' : ''}`}>
                     <label>Service Type *</label>
                     <select
                       name="loanType"
                       value={formData.loanType}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     >
                       <option value="">Select service type</option>
@@ -402,26 +627,30 @@ function ApplicationModal({ isOpen, onClose }) {
                         <option value="Vehicle Insurance">Vehicle Insurance</option>
                       </optgroup>
                     </select>
+                    {errors.loanType && <span className="error-message">{errors.loanType}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.loanAmount ? 'has-error' : ''}`}>
                     <label>Loan Amount (₹) *</label>
                     <input
                       type="number"
                       name="loanAmount"
                       value={formData.loanAmount}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="500000"
                       min="50000"
                       step="10000"
                     />
+                    {errors.loanAmount && <span className="error-message">{errors.loanAmount}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.tenure ? 'has-error' : ''}`}>
                     <label>Tenure (Years) *</label>
                     <select
                       name="tenure"
                       value={formData.tenure}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     >
                       <option value="">Select tenure</option>
@@ -456,13 +685,15 @@ function ApplicationModal({ isOpen, onClose }) {
                       <option value="29">29 years</option>
                       <option value="30">30 years</option>
                     </select>
+                    {errors.tenure && <span className="error-message">{errors.tenure}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.purpose ? 'has-error' : ''}`}>
                     <label>Purpose *</label>
                     <select
                       name="purpose"
                       value={formData.purpose}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     >
                       <option value="">Select purpose / detail</option>
@@ -476,6 +707,7 @@ function ApplicationModal({ isOpen, onClose }) {
                       <option value="insurance-policy">Insurance Coverage</option>
                       <option value="other">Other / General Query</option>
                     </select>
+                    {errors.purpose && <span className="error-message">{errors.purpose}</span>}
                   </div>
                 </div>
               </motion.div>
@@ -492,34 +724,39 @@ function ApplicationModal({ isOpen, onClose }) {
               >
                 <h3>Address Information</h3>
                 <div className="form-grid">
-                  <div className="form-group full-width">
+                  <div className={`form-group full-width ${errors.currentAddress ? 'has-error' : ''}`}>
                     <label>Current Address *</label>
                     <textarea
                       name="currentAddress"
                       value={formData.currentAddress}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="Enter your full residential address"
                       rows="3"
                     />
+                    {errors.currentAddress && <span className="error-message">{errors.currentAddress}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.city ? 'has-error' : ''}`}>
                     <label>City *</label>
                     <input
                       type="text"
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="Enter city"
                     />
+                    {errors.city && <span className="error-message">{errors.city}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.state ? 'has-error' : ''}`}>
                     <label>State *</label>
                     <select
                       name="state"
                       value={formData.state}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                     >
                       <option value="">Select state</option>
@@ -555,19 +792,20 @@ function ApplicationModal({ isOpen, onClose }) {
                       <option value="Puducherry">Puducherry</option>
                       <option value="Chandigarh">Chandigarh</option>
                     </select>
+                    {errors.state && <span className="error-message">{errors.state}</span>}
                   </div>
-                  <div className="form-group">
+                  <div className={`form-group ${errors.pincode ? 'has-error' : ''}`}>
                     <label>Pincode *</label>
                     <input
                       type="text"
                       name="pincode"
                       value={formData.pincode}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       required
                       placeholder="600001"
-                      pattern="[0-9]{6}"
-                      maxLength="6"
                     />
+                    {errors.pincode && <span className="error-message">{errors.pincode}</span>}
                   </div>
                 </div>
               </motion.div>
