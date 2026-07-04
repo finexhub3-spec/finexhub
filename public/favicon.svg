@@ -1,33 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <!-- Dark theme circular background -->
-  <circle cx="32" cy="32" r="32" fill="#101513"/>
-  
-  <defs>
-    <!-- Blue gradients for chart bars -->
-    <linearGradient id="blueBarGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#00a2ff"/>
-      <stop offset="100%" stop-color="#0052cc"/>
-    </linearGradient>
-    
-    <!-- Gold gradient for arrow -->
-    <linearGradient id="goldGrad" x1="12" y1="44" x2="52" y2="16" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#ff7b00"/>
-      <stop offset="60%" stop-color="#ffa600"/>
-      <stop offset="100%" stop-color="#ffd000"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Blue base swoosh -->
-  <path d="M 14 43 Q 22 48, 38 41 Q 26 44, 14 43" fill="#0052cc" opacity="0.8"/>
-
-  <!-- Three blue bar chart pillars -->
-  <rect x="20" y="33" width="4" height="9" rx="1" fill="url(#blueBarGrad)"/>
-  <rect x="27" y="25" width="4" height="17" rx="1" fill="url(#blueBarGrad)"/>
-  <rect x="34" y="19" width="4" height="23" rx="1" fill="url(#blueBarGrad)"/>
-  
-  <!-- Sweeping gold arrow -->
-  <path d="M 12 43 C 22 43, 34 36, 47 22 L 44 19 L 54 20 L 52 30 L 49 26 C 36 38, 24 43, 12 43 Z" fill="url(#goldGrad)"/>
-  
-  <!-- Small gold star accent -->
-  <path d="M 53 21 L 54 23.5 L 56.5 24 L 54.5 25.5 L 55 28 L 53 26.5 L 51 28 L 51.5 25.5 L 49.5 24 L 52 23.5 Z" fill="#ffd000"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <image href="/favicon.jpg" width="512" height="512" />
 </svg>
