@@ -111,13 +111,16 @@ function ContactPage() {
     {
       icon: '📞',
       title: 'Phone',
-      details: 'Kanthamani A: +91 89407 79023\n      +91 96269 00913\n.    +91 94455 34914',
+      details: [
+        { label: 'Kanthamani A', numbers: ['+91 89407 79023', '+91 96269 00913', '+91 94455 34914'] }
+      ],
       description: 'Mon-Sat 9AM-6PM IST'
     },
     {
       icon: '📧',
       title: 'Email',
       details: 'finexhub3@gmail.com',
+      link: 'mailto:finexhub3@gmail.com',
       description: 'We respond within 24 hours'
     },
     {
@@ -160,7 +163,33 @@ function ContactPage() {
                   <div className="contact-icon">{info.icon}</div>
                   <div className="contact-details">
                     <h4>{info.title}</h4>
-                    <p className="contact-primary" style={{ whiteSpace: 'pre-line' }}>{info.details}</p>
+                    {Array.isArray(info.details) ? (
+                      <div className="contact-phones">
+                        {info.details.map((contact, cIdx) => (
+                          <div key={cIdx} className="contact-person">
+                            <span className="contact-name">{contact.label}</span>
+                            <div className="orange-line"></div>
+                            <div className="phone-list">
+                              {contact.numbers.map((num, nIdx) => (
+                                <a
+                                  key={nIdx}
+                                  href={`tel:${num.replace(/[^+\d]/g, '')}`}
+                                  className="phone-link"
+                                >
+                                  {num}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : info.link ? (
+                      <a href={info.link} className="contact-primary email-link">
+                        {info.details}
+                      </a>
+                    ) : (
+                      <p className="contact-primary">{info.details}</p>
+                    )}
                     <p className="contact-secondary">{info.description}</p>
                   </div>
                 </motion.div>

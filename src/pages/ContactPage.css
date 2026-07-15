@@ -75,6 +75,85 @@
   opacity: 0.8;
 }
 
+.contact-phones {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.contact-person {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.orange-line {
+  height: 2px;
+  background: #ff7b00;
+  width: 60px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+.phone-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+}
+
+.phone-link {
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.phone-link:hover {
+  color: #ff7b00;
+}
+
+/* Dividing line between numbers */
+.phone-link:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.email-link {
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.email-link:hover {
+  color: #ff7b00;
+  transform: translateX(4px);
+}
+
+
 /* Contact Form Styles */
 .contact-form-container {
   background: var(--surface);
