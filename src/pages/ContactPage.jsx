@@ -111,7 +111,7 @@ function ContactPage() {
     {
       icon: '📞',
       title: 'Phone',
-      details: 'Kanthamani A: +91 89407 79023\nHariharan Dilli: +91 96269 00913\nPunithavel J: +91 94455 34914',
+      details: 'Kanthamani A: +91 89407 79023\n      +91 96269 00913\n.    +91 94455 34914',
       description: 'Mon-Sat 9AM-6PM IST'
     },
     {
